@@ -38,6 +38,7 @@ dependencies {
     compile ctre()
     compile navx()
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile files('lib/HarkerRoboLib.jar')
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
