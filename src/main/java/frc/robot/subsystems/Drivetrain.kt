@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import com.ctre.phoenix.motorcontrol.ControlMode
 import edu.wpi.first.wpilibj.command.Subsystem
+import frc.robot.commands.DriveWithVelocityManual
 
 
 object Drivetrain : Subsystem(){
@@ -66,5 +67,7 @@ object Drivetrain : Subsystem(){
                 rightOutputBase / divisor)
     }
 
-    override fun initDefaultCommand() : Unit = setDefaultCommand()
+    override fun initDefaultCommand() {
+        setDefaultCommand(DriveWithVelocityManual())
+    }
 }
