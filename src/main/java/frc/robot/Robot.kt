@@ -12,7 +12,7 @@ import frc.robot.subsystems.Drivetrain
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-class Robot : TimedRobot() {
+object Robot : TimedRobot() {
 
     /**
      * This function is run when the robot is first started up and should be
