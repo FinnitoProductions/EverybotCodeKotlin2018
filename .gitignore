@@ -23,6 +23,11 @@ hs_err_pid*
 .gradle/
 build/
 .idea/
+.vscode/
+.wpilib/
+.settings/
+bin/
+.project
 *.iml
 out/
 *.ipr
