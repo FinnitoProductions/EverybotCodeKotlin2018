@@ -1,6 +1,9 @@
 package frc.robot
 
 import edu.wpi.first.wpilibj.*
+import edu.wpi.first.wpilibj.command.Scheduler
+import frc.robot.commands.DriveWithVelocityManual
+import frc.robot.subsystems.Drivetrain
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -15,30 +18,36 @@ class Robot : TimedRobot() {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    override fun robotInit() {}
+    override fun robotInit() {
+        Drivetrain
+    }
 
     /**
      * This function is run once each time the robot enters autonomous mode.
      */
     override fun autonomousInit() {
+        Drivetrain.talonInit()
     }
 
     /**
      * This function is called periodically during autonomous.
      */
     override fun autonomousPeriodic() {
+        Scheduler.getInstance().run()
     }
 
     /**
      * This function is called once each time the robot enters teleoperated mode.
      */
     override fun teleopInit() {
+        Drivetrain.talonInit()
     }
 
     /**
      * This function is called periodically during teleoperated mode.
      */
     override fun teleopPeriodic() {
+        Scheduler.getInstance().run()
     }
 
     /**
