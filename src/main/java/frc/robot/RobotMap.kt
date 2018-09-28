@@ -16,7 +16,7 @@ object DrivetrainConstants {
     const val RIGHT_MASTER_INVERTED = true
     const val LEFT_FOLLOWER_INVERTED = true
     const val RIGHT_FOLLOWER_INVERTED = true
-    const val TALON_NEUTRAL_MODE = NeutralMode.Brake
+    var TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_RIGHT_CURRENT = 50
     const val TALON_CONTINUOUS_RIGHT_CURRENT = 20
     const val TALON_PEAK_LEFT_CURRENT = 50
