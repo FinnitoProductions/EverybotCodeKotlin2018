@@ -27,5 +27,6 @@ object DrivetrainConstants {
 
 object Global {
     const val TIMEOUT = 10
+    const val DEADBAND = 0.1
 }
 

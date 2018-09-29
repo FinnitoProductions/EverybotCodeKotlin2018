@@ -20,6 +20,7 @@ class Robot : TimedRobot() {
      */
     override fun robotInit() {
         Drivetrain
+        OI
     }
 
     /**
