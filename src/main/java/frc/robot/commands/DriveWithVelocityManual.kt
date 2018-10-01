@@ -17,23 +17,24 @@ class DriveWithVelocityManual : Command(){
     override fun execute() {
         speed = mapSpeed(OI.gamepad.leftY)
         turn = mapTurn(OI.gamepad.leftX)
-        Drivetrain.arcadeDrivePercentOutput(speed,turn)
-
+        Drivetrain.arcadeDrivePercentOutput(speed, turn)
     }
 
     private fun mapSpeed(givenSpeed : Double): Double {
         //checks if gamepad speed output is between [-1, 1] and if so, sets speed to 0
-        if( givenSpeed >= -Global.DEADBAND &&
-                givenSpeed <= Global.DEADBAND) {
-            return 0.0
-        }
+        if( Math.abs(givenSpeed) <= Global.DEADBAND) return 0.0
+        //map map output between [deadband, 1] and [-1, -deadband] to  [0, 1] and [-1, 0] respectively
+        if(givenSpeed > 0) return (givenSpeed-Global.DEADBAND)/(1-Global.DEADBAND)
+        if(givenSpeed < 0) return (givenSpeed+Global.DEADBAND)/(1-Global.DEADBAND)
     }
 
     private fun mapTurn(givenTurn : Double) : Double {
-        if(givenTurn >= -Global.DEADBAND &&
-           givenTurn <= Global.DEADBAND) {
-            return 0.0
-        }
+        //checks if gamepad speed output is between [-1, 1] and if so, sets speed to 0
+        if( Math.abs(givenTurn) <= Global.DEADBAND) return 0.0
+        //map map output between [deadband, 1] and [-1, -deadband] to  [0, 1] and [-1, 0] respectively
+        if(givenTurn > 0) return (givenTurn-Global.DEADBAND)/(1-Global.DEADBAND)
+        if(givenTurn < 0) return (givenTurn+Global.DEADBAND)/(1-Global.DEADBAND)
+
     }
 
     override fun initialize() {
