@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import frc.robot.commands.DriveWithVelocityManual
 import frc.robot.subsystems.Drivetrain
+import frc.robot.subsystems.Intake
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,6 +22,7 @@ object Robot : TimedRobot() {
     override fun robotInit() {
         Drivetrain
         OI
+        Intake
     }
 
     /**
@@ -28,6 +30,7 @@ object Robot : TimedRobot() {
      */
     override fun autonomousInit() {
         Drivetrain.talonInit()
+        Intake.talonInit()
     }
 
     /**
@@ -42,6 +45,7 @@ object Robot : TimedRobot() {
      */
     override fun teleopInit() {
         Drivetrain.talonInit()
+        Intake.talonInit()
     }
 
     /**

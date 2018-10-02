@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.DriveWithVelocityManual
 
 
-object Drivetrain : Subsystem(){
+object Drivetrain : Subsystem() {
     val leftMaster: TalonSRX
     val rightMaster: TalonSRX
     val leftFollower: TalonSRX
@@ -24,6 +24,7 @@ object Drivetrain : Subsystem(){
         followMasters()
         invertTalons()
         setNeutralModes()
+        setCurrentLimits()
     }
 
     private fun followMasters() {
