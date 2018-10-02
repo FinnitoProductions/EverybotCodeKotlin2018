@@ -20,33 +20,22 @@ class DriveWithVelocityManual : Command() {
      * to the desired values to move the robot optimally.
      */
     override fun execute() {
-        speed = mapSpeed(OI.gamepad.leftY)
-        turn = mapTurn(OI.gamepad.leftX)
+        speed = mapOutput(OI.gamepad.leftY)
+        turn = mapOutput(OI.gamepad.leftX)
         Drivetrain.arcadeDrivePercentOutput(speed, turn)
     }
 
     /**
-     * Constrains gamepad speed output from [-deadband, deadband] to 0.
+     * Constrains gamepad  output from [-deadband, deadband] to 0.
      * Maps output between [deadband, 1] and [-1, -deadband]
      * to  [0, 1] and [-1, 0] respectively.
      */
-    private fun mapSpeed(givenSpeed: Double): Double {
-        if (Math.abs(givenSpeed) <= Global.DEADBAND) return 0.0
-        if (givenSpeed > 0) return (givenSpeed - Global.DEADBAND) / (1 - Global.DEADBAND)
-        else return (givenSpeed + Global.DEADBAND) / (1 - Global.DEADBAND)
+    private fun mapOutput(givenOutput: Double): Double {
+        if (Math.abs(givenOutput) <= Global.DEADBAND) return 0.0
+        if (givenOutput > 0) return (givenOutput - Global.DEADBAND) / (1 - Global.DEADBAND)
+        else return (givenOutput + Global.DEADBAND) / (1 - Global.DEADBAND)
     }
 
-    /**
-     * Constrains gamepad turn output from [-deadband, deadband] to 0.
-     * Maps output between [deadband, 1] and [-1, -deadband]
-     * to  [0, 1] and [-1, 0] respectively.
-     */
-    private fun mapTurn(givenTurn: Double): Double {
-        if (Math.abs(givenTurn) <= Global.DEADBAND) return 0.0
-        if (givenTurn > 0) return (givenTurn - Global.DEADBAND) / (1 - Global.DEADBAND)
-        else return (givenTurn + Global.DEADBAND) / (1 - Global.DEADBAND)
-
-    }
 
     override fun initialize() {
 
