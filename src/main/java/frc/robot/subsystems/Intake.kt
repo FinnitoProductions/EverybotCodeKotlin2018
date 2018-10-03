@@ -1,10 +1,12 @@
 package frc.robot.subsystems
 
+import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.IntakeConstants
 import frc.robot.CAN_IDs
 import frc.robot.Global
+import frc.robot.OI
 
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
@@ -54,4 +56,17 @@ object Intake : Subsystem() {
     override fun initDefaultCommand() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    private fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
+        if(direction.equals(IntakeDirection.IN)) {
+            leftTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, output * -IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+        else {
+            leftTalon.set(ControlMode.PercentOutput, -output * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+
+    }
+
 }

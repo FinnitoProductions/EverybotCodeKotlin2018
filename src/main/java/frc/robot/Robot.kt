@@ -2,7 +2,6 @@ package frc.robot
 
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
-import frc.robot.commands.DriveWithVelocityManual
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
 

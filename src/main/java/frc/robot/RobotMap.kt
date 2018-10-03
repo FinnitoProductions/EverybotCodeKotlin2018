@@ -37,6 +37,8 @@ object IntakeConstants {
     const val TALON_CONTINUOUS_RIGHT_CURRENT = 0
     const val TALON_PEAK_TIME = 0
     const val TALON_CURRENT_ENABLE = true
+    const val MAX_OUTTAKE_SPEED = 0
+    const val TALON_INTAKE_DIRECTION = 1
 
 }
 
