@@ -53,12 +53,41 @@ object Intake : Subsystem() {
 
     }
 
-    fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, direction: IntakeDirection) {
+    /**
+     * Sets wheels to the same output and direction
+     *
+     * @param output value from controller that sets output for left and right wheels to same value
+     * @param direction sets both wheels to either IN or OUT direction
+     */
+    fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
         if (direction == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
-            rightTalon.set(ControlMode.PercentOutput, rightOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
+            leftTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, output * -IntakeConstants.TALON_INTAKE_DIRECTION)
         } else {
+            leftTalon.set(ControlMode.PercentOutput, -output * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+    }
+
+    /**
+     * Sets wheels to their respective outputs and directions.
+     *
+     * @param leftOutput value from controller that sets left wheel output
+     * @param rightOutput value from controller that sets right wheel output
+     * @param leftDirection enum representing left wheel's direction
+     * @param rightDirection enum representing right wheel's direction
+     */
+    fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
+        if (leftDirection == IntakeDirection.IN) {
+            leftTalon.set(ControlMode.PercentOutput, leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+        else if(leftDirection == IntakeDirection.OUT) {
             leftTalon.set(ControlMode.PercentOutput, -leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+        if(rightDirection == IntakeDirection.IN) {
+            rightTalon.set(ControlMode.PercentOutput, rightOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
+        }
+        else {
             rightTalon.set(ControlMode.PercentOutput, rightOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
 
