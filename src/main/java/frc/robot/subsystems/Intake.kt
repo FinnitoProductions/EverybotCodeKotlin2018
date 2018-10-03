@@ -54,7 +54,7 @@ object Intake : Subsystem() {
     }
 
     fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
-        if (direction.equals(IntakeDirection.IN)) {
+        if (direction == IntakeDirection.IN) {
             leftTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
             rightTalon.set(ControlMode.PercentOutput, output * -IntakeConstants.TALON_INTAKE_DIRECTION)
         } else {
