@@ -53,20 +53,20 @@ object Intake : Subsystem() {
 
     }
 
-    override fun initDefaultCommand() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
-        if(direction.equals(IntakeDirection.IN)) {
+    fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
+        if (direction.equals(IntakeDirection.IN)) {
             leftTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
             rightTalon.set(ControlMode.PercentOutput, output * -IntakeConstants.TALON_INTAKE_DIRECTION)
-        }
-        else {
+        } else {
             leftTalon.set(ControlMode.PercentOutput, -output * IntakeConstants.TALON_INTAKE_DIRECTION)
             rightTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
 
     }
+
+    override fun initDefaultCommand() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 }
