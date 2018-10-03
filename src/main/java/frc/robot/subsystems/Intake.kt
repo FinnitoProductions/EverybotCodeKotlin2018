@@ -81,7 +81,7 @@ object Intake : Subsystem() {
         if (leftDirection == IntakeDirection.IN) {
             leftTalon.set(ControlMode.PercentOutput, leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
-        else if(leftDirection == IntakeDirection.OUT) {
+        else {
             leftTalon.set(ControlMode.PercentOutput, -leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
         if(rightDirection == IntakeDirection.IN) {
