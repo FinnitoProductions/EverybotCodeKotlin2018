@@ -10,6 +10,7 @@ object CAN_IDs {
     const val RIGHT_FOLLOWER_ID = -1
     const val LEFT_INTAKE_ID = -1
     const val RIGHT_INTAKE_ID = -1
+    const val ARM_TALON_ID = -1
 }
 
 object DrivetrainConstants {
@@ -42,6 +43,14 @@ object IntakeConstants {
 
 }
 
+object ArmConstants {
+    const val ARM_INVERTED = true
+    var TALON_NEUTRAL_MODE = NeutralMode.Brake
+    const val TALON_PEAK_CURRENT = 0
+    const val TALON_CONTINUOUS_CURRENT = 0
+    const val TALON_PEAK_TIME = 0
+    const val TALON_CURRENT_ENABLE = true
+}
 object Global {
     const val TIMEOUT = 10
     const val DEADBAND = 0.1

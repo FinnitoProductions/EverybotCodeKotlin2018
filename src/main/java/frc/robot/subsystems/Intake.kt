@@ -61,12 +61,11 @@ object Intake : Subsystem() {
      */
     fun intakeOuttakeCube(output: Double, direction: IntakeDirection) {
         if (direction == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
-            rightTalon.set(ControlMode.PercentOutput, output * -IntakeConstants.TALON_INTAKE_DIRECTION)
+            intakeOuttakeCube(output, output, IntakeDirection.IN, IntakeDirection.IN)
         } else {
-            leftTalon.set(ControlMode.PercentOutput, -output * IntakeConstants.TALON_INTAKE_DIRECTION)
-            rightTalon.set(ControlMode.PercentOutput, output * IntakeConstants.TALON_INTAKE_DIRECTION)
+            intakeOuttakeCube(output, output, IntakeDirection.OUT, IntakeDirection.OUT)
         }
+
     }
 
     /**
