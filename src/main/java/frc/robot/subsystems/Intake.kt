@@ -77,21 +77,29 @@ object Intake : Subsystem() {
      * @param rightDirection enum representing right wheel's direction
      */
     fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
+        var leftModifiedOutput = constrainOutput(leftOutput)
+        var rightModifiedOutput = constrainOutput(rightOutput)
         if (leftDirection == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput* IntakeConstants.TALON_INTAKE_DIRECTION)
         }
         else {
-            leftTalon.set(ControlMode.PercentOutput, -leftOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
         }
         if(rightDirection == IntakeDirection.IN) {
-            rightTalon.set(ControlMode.PercentOutput, rightOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
         }
         else {
-            rightTalon.set(ControlMode.PercentOutput, rightOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
 
     }
 
+    fun constrainOutput(output: Double) : Double {
+        if(output > IntakeConstants.MAX_OUTTAKE_SPEED) {
+           return IntakeConstants.MAX_OUTTAKE_SPEED
+        }
+        return output
+    }
     override fun initDefaultCommand() {
         setDefaultCommand(IntakeOuttakeManual())
     }
