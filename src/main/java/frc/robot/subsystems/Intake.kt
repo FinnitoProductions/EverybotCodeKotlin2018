@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.IntakeConstants
 import frc.robot.CAN_IDs
 import frc.robot.Global
-import frc.robot.OI
+import frc.robot.commands.IntakeOuttakeManual
 
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
@@ -94,7 +94,7 @@ object Intake : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        setDefaultCommand(IntakeOuttakeManual())
     }
 
 
