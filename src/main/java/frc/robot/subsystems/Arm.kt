@@ -39,20 +39,20 @@ object Arm : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        armTalon.configPeakCurrentDuration()
-        armTalon.configPeakCurrentLimit()
-        armTalon.configContinuousCurrentLimit()
-        armTalon.enableCurrentLimit()
+        armTalon.configPeakCurrentDuration(Global.TIMEOUT)
+        armTalon.configPeakCurrentLimit(ArmConstants.TALON_PEAK_CURRENT)
+        armTalon.configContinuousCurrentLimit(ArmConstants.TALON_CONTINUOUS_CURRENT)
+        armTalon.enableCurrentLimit(ArmConstants.TALON_CURRENT_ENABLE)
 
     }
 
-    fun arcadeDrivePercentOutput(speed: Double, turn: Double) {
+    fun armMotionPercentOutput(speed: Double, turn: Double) {
         val divisor = Math.max(1.0, Math.max(Math.abs(speed + Math.pow(turn, 2.0)), Math.abs(speed - Math.pow(turn, 2.0))))
         val leftOutputBase = speed + turn * Math.abs(turn)
-        leftMaster.set(ControlMode.PercentOutput, leftOutputBase / divisor)
+        armTalon.set(ControlMode.PercentOutput, leftOutputBase / divisor)
 
         val rightOutputBase = speed - turn * Math.abs(turn)
-        rightMaster.set(ControlMode.PercentOutput,
+        armTalon.set(ControlMode.PercentOutput,
                 rightOutputBase / divisor)
     }
 

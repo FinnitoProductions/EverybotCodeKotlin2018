@@ -98,6 +98,9 @@ object Intake : Subsystem() {
         if(output > IntakeConstants.MAX_OUTTAKE_SPEED) {
            return IntakeConstants.MAX_OUTTAKE_SPEED
         }
+        if(output < IntakeConstants.MIN_OUTTAKE_SPEED) {
+            return IntakeConstants.MIN_OUTTAKE_SPEED
+        }
         return output
     }
     override fun initDefaultCommand() {
