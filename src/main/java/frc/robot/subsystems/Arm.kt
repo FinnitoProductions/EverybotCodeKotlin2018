@@ -5,23 +5,20 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.DriveWithVelocityManual
+import frc.robot.commands.MoveArmManual
 import frc.robot.util.MathUtil
 
 object Arm : Subsystem() {
 
-    val armTalon: TalonSRX
+    val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
 
     enum class ArmDirection {
         UP, DOWN
     }
 
-    init {
-        armTalon = TalonSRX(CAN_IDs.ARM_TALON_ID)
-    }
-
 
     override fun initDefaultCommand() {
-
+        defaultCommand = MoveArmManual()
     }
 
 

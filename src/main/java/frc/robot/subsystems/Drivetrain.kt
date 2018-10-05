@@ -69,6 +69,6 @@ object Drivetrain : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-        setDefaultCommand(DriveWithVelocityManual())
+        defaultCommand = DriveWithVelocityManual()
     }
 }

@@ -96,7 +96,7 @@ object Intake : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-        setDefaultCommand(IntakeOuttakeManual())
+        defaultCommand = IntakeOuttakeManual()
     }
 
 
