@@ -20,7 +20,7 @@ object Arm : Subsystem() {
 
 
     override fun initDefaultCommand() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 
@@ -52,7 +52,9 @@ object Arm : Subsystem() {
         }
         else {
             armTalon.set(ControlMode.PercentOutput, output * -ArmConstants.TALON_MOTION_DIRECTION)
-        }`
+        }
     }
+
+    fun getTalonCurrent() = armTalon.outputCurrent
 
 }
