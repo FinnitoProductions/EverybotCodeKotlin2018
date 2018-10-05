@@ -46,14 +46,18 @@ object Arm : Subsystem() {
 
     }
 
-    fun armMotionPercentOutput(speed: Double, turn: Double) {
-        val divisor = Math.max(1.0, Math.max(Math.abs(speed + Math.pow(turn, 2.0)), Math.abs(speed - Math.pow(turn, 2.0))))
-        val leftOutputBase = speed + turn * Math.abs(turn)
-        armTalon.set(ControlMode.PercentOutput, leftOutputBase / divisor)
+    fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
+        Ints.constrain
+    }
 
-        val rightOutputBase = speed - turn * Math.abs(turn)
-        armTalon.set(ControlMode.PercentOutput,
-                rightOutputBase / divisor)
+    fun constrainOutput(output: Double, maxSpeed) : Double {
+        if(output > IntakeConstants.MAX_OUTTAKE_SPEED) {
+            return IntakeConstants.MAX_OUTTAKE_SPEED
+        }
+        if(output < IntakeConstants.MIN_OUTTAKE_SPEED) {
+            return IntakeConstants.MIN_OUTTAKE_SPEED
+        }
+        return output
     }
 
 }

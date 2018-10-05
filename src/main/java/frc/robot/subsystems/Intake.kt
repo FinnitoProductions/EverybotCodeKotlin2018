@@ -7,6 +7,7 @@ import frc.robot.IntakeConstants
 import frc.robot.CAN_IDs
 import frc.robot.Global
 import frc.robot.commands.IntakeOuttakeManual
+import frc.robot.util.MathUtil
 
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
@@ -77,8 +78,8 @@ object Intake : Subsystem() {
      * @param rightDirection enum representing right wheel's direction
      */
     fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
-        var leftModifiedOutput = constrainOutput(leftOutput)
-        var rightModifiedOutput = constrainOutput(rightOutput)
+        var leftModifiedOutput = MathUtil.constrainOutput(leftOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
+        var rightModifiedOutput = MathUtil.constrainOutput(rightOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
             leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput* IntakeConstants.TALON_INTAKE_DIRECTION)
         }
@@ -94,15 +95,6 @@ object Intake : Subsystem() {
 
     }
 
-    fun constrainOutput(output: Double) : Double {
-        if(output > IntakeConstants.MAX_OUTTAKE_SPEED) {
-           return IntakeConstants.MAX_OUTTAKE_SPEED
-        }
-        if(output < IntakeConstants.MIN_OUTTAKE_SPEED) {
-            return IntakeConstants.MIN_OUTTAKE_SPEED
-        }
-        return output
-    }
     override fun initDefaultCommand() {
         setDefaultCommand(IntakeOuttakeManual())
     }
