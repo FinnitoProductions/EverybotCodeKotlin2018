@@ -47,17 +47,12 @@ object Arm : Subsystem() {
     }
 
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
-        Ints.constrain
-    }
-
-    fun constrainOutput(output: Double, maxSpeed) : Double {
-        if(output > IntakeConstants.MAX_OUTTAKE_SPEED) {
-            return IntakeConstants.MAX_OUTTAKE_SPEED
+        if(direction == ArmDirection.UP) {
+            armTalon.set(ControlMode.PercentOutput, output * ArmConstants.TALON_MOTION_DIRECTION)
         }
-        if(output < IntakeConstants.MIN_OUTTAKE_SPEED) {
-            return IntakeConstants.MIN_OUTTAKE_SPEED
-        }
-        return output
+        else {
+            armTalon.set(ControlMode.PercentOutput, output * -ArmConstants.TALON_MOTION_DIRECTION)
+        }`
     }
 
 }

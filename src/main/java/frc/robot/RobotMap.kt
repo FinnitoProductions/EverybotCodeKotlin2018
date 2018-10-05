@@ -51,6 +51,7 @@ object ArmConstants {
     const val TALON_CONTINUOUS_CURRENT = 0
     const val TALON_PEAK_TIME = 0
     const val TALON_CURRENT_ENABLE = true
+    const val TALON_MOTION_DIRECTION = 1
 }
 object Global {
     const val TIMEOUT = 10
