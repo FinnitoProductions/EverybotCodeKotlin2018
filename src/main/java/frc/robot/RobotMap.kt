@@ -51,6 +51,8 @@ object ArmConstants {
     const val TALON_CONTINUOUS_CURRENT = 0
     const val TALON_PEAK_TIME = 0
     const val TALON_CURRENT_ENABLE = true
+    const val MAX_MOTION_SPEED = 1.0
+    const val MIN_MOTION_SPEED = 0.0
     const val TALON_MOTION_DIRECTION = 1
     const val TALON_CURRENT_SPIKE = 0.0
 }

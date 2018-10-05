@@ -4,7 +4,11 @@ import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.command.TimedCommand
 import frc.robot.subsystems.Intake
 
-class IntakeOuttakeTimed(val time: Double, val output:  Double, val direction: Intake.IntakeDirection) : TimedCommand(time) {
+class IntakeOuttakeTimed(val time: Double, val output: Double, val direction: Intake.IntakeDirection) : TimedCommand(time) {
+
+    init {
+        requires(Intake)
+    }
 
     override fun end() {
 

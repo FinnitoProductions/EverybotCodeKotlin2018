@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.DriveWithVelocityManual
+import frc.robot.util.MathUtil
 
 object Arm : Subsystem() {
 
@@ -47,11 +48,12 @@ object Arm : Subsystem() {
     }
 
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
+        var modifiedOutput = MathUtil.constrainOutput(output, ArmConstants.MAX_MOTION_SPEED, ArmConstants.MIN_MOTION_SPEED)
         if(direction == ArmDirection.UP) {
-            armTalon.set(ControlMode.PercentOutput, output * ArmConstants.TALON_MOTION_DIRECTION)
+            armTalon.set(ControlMode.PercentOutput, modifiedOutput * ArmConstants.TALON_MOTION_DIRECTION)
         }
         else {
-            armTalon.set(ControlMode.PercentOutput, output * -ArmConstants.TALON_MOTION_DIRECTION)
+            armTalon.set(ControlMode.PercentOutput, modifiedOutput * -ArmConstants.TALON_MOTION_DIRECTION)
         }
     }
 

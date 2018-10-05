@@ -7,6 +7,10 @@ import frc.robot.subsystems.Intake
 
 class IntakeOuttakeManual : Command() {
 
+    init {
+        requires(Intake)
+    }
+
     override fun end() {
 
     }
@@ -14,10 +18,9 @@ class IntakeOuttakeManual : Command() {
     override fun execute() {
         var intakeOutput = OI.gamepad.leftTrigger
         var outakeOutput = OI.gamepad.rightTrigger
-        if(intakeOutput > outakeOutput) {
+        if (intakeOutput > outakeOutput) {
             Intake.intakeOuttakeCube(intakeOutput, Intake.IntakeDirection.IN)
-        }
-        else {
+        } else {
             Intake.intakeOuttakeCube(outakeOutput, Intake.IntakeDirection.OUT)
         }
     }

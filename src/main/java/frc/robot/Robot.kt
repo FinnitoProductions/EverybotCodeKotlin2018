@@ -2,6 +2,7 @@ package frc.robot
 
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
+import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
 
@@ -22,6 +23,7 @@ object Robot : TimedRobot() {
         Drivetrain
         OI
         Intake
+        Arm
     }
 
     /**

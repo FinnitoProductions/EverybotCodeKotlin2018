@@ -11,6 +11,10 @@ class DriveWithVelocityManual : Command() {
     var speed = 0.0
     var turn = 0.0
 
+    init {
+        requires(Drivetrain)
+    }
+
     override fun end() {
 
     }
@@ -23,17 +27,6 @@ class DriveWithVelocityManual : Command() {
         speed = mapOutput(OI.gamepad.leftY)
         turn = mapOutput(OI.gamepad.leftX)
         Drivetrain.arcadeDrivePercentOutput(speed, turn)
-    }
-
-    /**
-     * Constrains gamepad  output from [-deadband, deadband] to 0.
-     * Maps output between [deadband, 1] and [-1, -deadband]
-     * to  [0, 1] and [-1, 0] respectively.
-     */
-    private fun mapOutput(givenOutput: Double): Double {
-        if (Math.abs(givenOutput) <= Global.DEADBAND) return 0.0
-        if (givenOutput > 0) return (givenOutput - Global.DEADBAND) / (1 - Global.DEADBAND)
-        else return (givenOutput + Global.DEADBAND) / (1 - Global.DEADBAND)
     }
 
 
