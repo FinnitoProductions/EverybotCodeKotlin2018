@@ -1,6 +1,7 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj.command.Command
+import frc.robot.ArmConstants
 import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Arm
@@ -17,7 +18,9 @@ class MoveArmManual() : Command() {
 
     override fun execute() {
         var output = MathUtil.mapOutput(OI.gamepad.rightTrigger, Global.DEADBAND)
-        if(output > 0)
+        if(Arm.getTalonCurrent() >= ArmConstants.TALON_CURRENT_SPIKE)
+            output = 0.0
+        if(Math.signum(output) as Int == OI.JOYSTICK_UP)
             Arm.armMotionPercentOutput(output, Arm.ArmDirection.UP)
         else
             Arm.armMotionPercentOutput(output, Arm.ArmDirection.DOWN)
