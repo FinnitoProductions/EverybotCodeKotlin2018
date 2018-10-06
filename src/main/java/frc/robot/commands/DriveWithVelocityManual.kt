@@ -27,7 +27,7 @@ class DriveWithVelocityManual : Command() {
     override fun execute() {
         speed = MathUtil.mapOutput(OI.gamepad.leftY, Global.DEADBAND)
         turn = MathUtil.mapOutput(OI.gamepad.leftX, Global.DEADBAND)
-        Drivetrain.arcadeDrivePercentOutput(speed, turn)
+        Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
     }
 
 
