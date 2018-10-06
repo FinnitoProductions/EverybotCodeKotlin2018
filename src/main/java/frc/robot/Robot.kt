@@ -21,9 +21,9 @@ object Robot : TimedRobot() {
      */
     override fun robotInit() {
         Drivetrain
-        OI
         Intake
         Arm
+        OI
     }
 
     /**

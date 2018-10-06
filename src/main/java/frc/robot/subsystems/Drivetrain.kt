@@ -18,6 +18,7 @@ object Drivetrain : Subsystem() {
         rightMaster = TalonSRX(CAN_IDs.RIGHT_MASTER_ID)
         leftFollower = TalonSRX(CAN_IDs.LEFT_FOLLOWER_ID)
         rightFollower = TalonSRX(CAN_IDs.RIGHT_FOLLOWER_ID)
+        OI.initBindings()
     }
 
     fun talonInit() {

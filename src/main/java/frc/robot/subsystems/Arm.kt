@@ -8,7 +8,7 @@ import frc.robot.commands.DriveWithVelocityManual
 import frc.robot.commands.MoveArmManual
 import frc.robot.util.MathUtil
 
-object Arm : Subsystem() {
+object Arm() : Subsystem() {
 
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
 
