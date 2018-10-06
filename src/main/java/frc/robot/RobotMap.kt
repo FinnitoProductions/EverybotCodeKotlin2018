@@ -55,6 +55,8 @@ object ArmConstants {
     const val MIN_MOTION_SPEED = 0.0
     const val TALON_MOTION_DIRECTION = 1
     const val TALON_CURRENT_SPIKE = 0.0
+    const val MAX_POSITION = 0.0
+    const val MIN_POSITION = 0.0
 }
 
 object Global {
