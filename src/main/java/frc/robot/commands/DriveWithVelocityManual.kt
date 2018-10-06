@@ -5,6 +5,7 @@ import frc.robot.DrivetrainConstants
 import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
+import frc.robot.util.MathUtil
 import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
 
 class DriveWithVelocityManual : Command() {
@@ -24,8 +25,8 @@ class DriveWithVelocityManual : Command() {
      * to the desired values to move the robot optimally.
      */
     override fun execute() {
-        speed = mapOutput(OI.gamepad.leftY)
-        turn = mapOutput(OI.gamepad.leftX)
+        speed = MathUtil.mapOutput(OI.gamepad.leftY, Global.DEADBAND)
+        turn = MathUtil.mapOutput(OI.gamepad.leftX, Global.DEADBAND)
         Drivetrain.arcadeDrivePercentOutput(speed, turn)
     }
 

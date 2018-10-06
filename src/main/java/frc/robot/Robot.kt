@@ -47,6 +47,7 @@ object Robot : TimedRobot() {
     override fun teleopInit() {
         Drivetrain.talonInit()
         Intake.talonInit()
+        Arm.talonInit()
     }
 
     /**

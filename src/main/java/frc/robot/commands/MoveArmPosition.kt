@@ -13,10 +13,6 @@ class MoveArmPosition(val speed: Double, val direction: Arm.ArmDirection) : Comm
         return Arm.getTalonCurrent() >= ArmConstants.TALON_CURRENT_SPIKE
     }
 
-    init {
-        requires(Arm)
-    }
-
     override fun execute() {
         Arm.armMotionPercentOutput(speed, direction)
     }
