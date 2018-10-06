@@ -14,10 +14,6 @@ class IntakeOuttakeManual : Command() {
         requires(Intake)
     }
 
-    override fun end() {
-
-    }
-
     override fun execute() {
         var joystickIntakeInput = MathUtil.mapOutput(OI.gamepad.leftTrigger, Global.DEADBAND)
         var joystickOuttakeInput = OI.gamepad.rightTrigger
@@ -26,10 +22,6 @@ class IntakeOuttakeManual : Command() {
         } else {
             Intake.intakeOuttakeCube(joystickOuttakeInput, Intake.IntakeDirection.OUT)
         }
-    }
-
-    override fun initialize() {
-
     }
 
     /**

@@ -14,8 +14,8 @@ object OI() {
         initBindings()
     }
     fun initBindings() {
-        OI.gamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MIN_POSITION, Arm.ArmDirection.DOWN))
-        OI.gamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_POSITION, Arm.ArmDirection.UP))
+        OI.gamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+        OI.gamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
     }
 }

@@ -16,10 +16,6 @@ class DriveWithVelocityManual : Command() {
         requires(Drivetrain)
     }
 
-    override fun end() {
-
-    }
-
     /**
      * Sets the gamepad speed and turn output
      * to the desired values to move the robot optimally.
@@ -28,11 +24,6 @@ class DriveWithVelocityManual : Command() {
         speed = MathUtil.mapOutput(OI.gamepad.leftY, Global.DEADBAND)
         turn = MathUtil.mapOutput(OI.gamepad.leftX, Global.DEADBAND)
         Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
-    }
-
-
-    override fun initialize() {
-
     }
 
     /**
