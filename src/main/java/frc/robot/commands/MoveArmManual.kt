@@ -17,12 +17,12 @@ class MoveArmManual() : Command() {
     }
 
     override fun execute() {
-        var output = MathUtil.mapOutput(OI.gamepad.rightTrigger, Global.DEADBAND)
+        var joystickInput = MathUtil.mapOutput(OI.gamepad.rightTrigger, Global.DEADBAND)
         if(Arm.getTalonCurrent() >= ArmConstants.TALON_CURRENT_SPIKE)
-            output = 0.0
-        if(Math.signum(output) as Int == OI.JOYSTICK_UP)
-            Arm.armMotionPercentOutput(output, Arm.ArmDirection.UP)
+            joystickInput = 0.0
+        if(Math.signum(joystickInput) as Int == OI.JOYSTICK_UP)
+            Arm.armMotionPercentOutput(joystickInput, Arm.ArmDirection.UP)
         else
-            Arm.armMotionPercentOutput(output, Arm.ArmDirection.DOWN)
+            Arm.armMotionPercentOutput(joystickInput, Arm.ArmDirection.DOWN)
     }
 }

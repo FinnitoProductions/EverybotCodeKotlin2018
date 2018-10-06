@@ -19,12 +19,12 @@ class IntakeOuttakeManual : Command() {
     }
 
     override fun execute() {
-        var intakeOutput = MathUtil.mapOutput(OI.gamepad.leftTrigger, Global.DEADBAND)
-        var outtakeOutput = OI.gamepad.rightTrigger
-        if (intakeOutput > outtakeOutput) {
-            Intake.intakeOuttakeCube(intakeOutput, Intake.IntakeDirection.IN)
+        var joystickIntakeInput = MathUtil.mapOutput(OI.gamepad.leftTrigger, Global.DEADBAND)
+        var joystickOuttakeInput = OI.gamepad.rightTrigger
+        if (joystickIntakeInput > joystickOuttakeInput) {
+            Intake.intakeOuttakeCube(joystickIntakeInput, Intake.IntakeDirection.IN)
         } else {
-            Intake.intakeOuttakeCube(outtakeOutput, Intake.IntakeDirection.OUT)
+            Intake.intakeOuttakeCube(joystickOuttakeInput, Intake.IntakeDirection.OUT)
         }
     }
 
