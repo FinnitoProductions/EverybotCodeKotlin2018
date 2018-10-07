@@ -12,12 +12,15 @@ object OI {
     val operatorGamepad = GamepadWrapper(OPERATOR_PORT)
     val JOYSTICK_UP = 1
 
+    val XBOX_DEADBAND = 0.1
+    val LOGITECH_DEADBAND = 0.1
+
     init {
         initBindings()
     }
 
     fun initBindings() {
-        if (MathUtil.mapOutput(OI.driverGamepad.rightTrigger, Global.DEADBAND) != 0.0) {
+        if (MathUtil.mapOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND) != 0.0) {
             driverGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
             driverGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 

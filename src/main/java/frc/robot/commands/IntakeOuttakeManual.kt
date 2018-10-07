@@ -15,16 +15,16 @@ class IntakeOuttakeManual : Command() {
     }
 
     override fun execute() {
-        var driverJoystickIntakeInput = MathUtil.mapOutput(OI.driverGamepad.leftTrigger, Global.DEADBAND)
-        var driverJoystickOuttakeInput = MathUtil.mapOutput(OI.driverGamepad.rightTrigger, Global.DEADBAND)
+        var driverJoystickIntakeInput = MathUtil.mapOutput(OI.driverGamepad.leftTrigger, OI.XBOX_DEADBAND)
+        var driverJoystickOuttakeInput = MathUtil.mapOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND)
         if (driverJoystickIntakeInput > driverJoystickOuttakeInput) {
             Intake.intakeOuttakeCube(driverJoystickIntakeInput, Intake.IntakeDirection.IN)
         } else {
             Intake.intakeOuttakeCube(driverJoystickOuttakeInput, Intake.IntakeDirection.OUT)
         }
 
-        var leftOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.leftY, Global.DEADBAND)
-        var rightOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.rightY, Global.DEADBAND)
+        var leftOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.leftY, OI.LOGITECH_DEADBAND)
+        var rightOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.rightY, OI.LOGITECH_DEADBAND)
         Intake.intakeOuttakeCube(leftOperatorJoystickInput, rightOperatorJoystickInput,
                 if (Math.signum(leftOperatorJoystickInput) as Int == OI.JOYSTICK_UP) Intake.IntakeDirection.OUT else Intake.IntakeDirection.IN,
                 if (Math.signum(rightOperatorJoystickInput) as Int == OI.JOYSTICK_UP) Intake.IntakeDirection.OUT else Intake.IntakeDirection.IN)
