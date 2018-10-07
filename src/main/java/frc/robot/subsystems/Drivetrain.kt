@@ -50,11 +50,11 @@ object Drivetrain : Subsystem() {
     private fun setCurrentLimits() {
         leftMaster.configPeakCurrentDuration(DrivetrainConstants.TALON_PEAK_TIME, Global.TIMEOUT)
         leftMaster.configPeakCurrentLimit(DrivetrainConstants.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_LEFT_CURRENT)
+        leftMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
         leftMaster.enableCurrentLimit(DrivetrainConstants.TALON_CURRENT_ENABLE)
         rightMaster.configPeakCurrentDuration(DrivetrainConstants.TALON_PEAK_TIME, Global.TIMEOUT)
         rightMaster.configPeakCurrentLimit(DrivetrainConstants.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_RIGHT_CURRENT)
+        rightMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
         rightMaster.enableCurrentLimit(DrivetrainConstants.TALON_CURRENT_ENABLE)
 
     }
