@@ -3,19 +3,19 @@ package frc.robot
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
 import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
-import java.awt.Button
 
 object OI() {
-    val GAMEPAD_PORT = 0
-    val gamepad = GamepadWrapper(GAMEPAD_PORT)
+    val DRIVER_PORT = 0
+    val OPERATOR_PORT = 1
+    val driverGamepad = GamepadWrapper(DRIVER_PORT)
+    val operatorGamepad = GamepadWrapper(OPERATOR_PORT)
     val JOYSTICK_UP = 1
 
     init {
         initBindings()
     }
     fun initBindings() {
-        OI.gamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        OI.gamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
-
+        OI.operatorGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+        OI.operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
     }
 }
