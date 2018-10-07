@@ -13,8 +13,7 @@ class IntakeOuttakeTimed(val time: Double, val output: Double, val direction: In
     }
 
     override fun execute() {
-        var mappedOutput = MathUtil.mapOutput(output, Global.DEADBAND)
-        Intake.intakeOuttakeCube(mappedOutput, direction)
+        Intake.intakeOuttakeCube(output, direction)
     }
 
 }
