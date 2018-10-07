@@ -18,4 +18,4 @@ git checkout master
 
 ## Authors
 * **Angela Jia** - *Wrote bulk of code* - [ange1a-j14](https://github.com/ange1a-j14)
-* **Finn Frankis** - *Provided syntactical and conceptual guidance * - [FinnitoProductions](https://github.com/FinnitoProductions)
+* **Finn Frankis** - *Provided syntactical and conceptual guidance* - [FinnitoProductions](https://github.com/FinnitoProductions)
