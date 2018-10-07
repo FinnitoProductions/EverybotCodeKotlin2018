@@ -12,12 +12,10 @@ class MoveArmManual() : Command() {
     init {
         requires(Arm)
     }
-    override fun isFinished(): Boolean {
-        return false
-    }
+    override fun isFinished() = false
 
     override fun execute() {
-        var joystickInput = MathUtil.mapOutput(OI.gamepad.rightTrigger, Global.DEADBAND)
+        var joystickInput = MathUtil.mapOutput(OI.driverGamepad.rightTrigger, Global.DEADBAND)
         if(Arm.getTalonCurrent() >= ArmConstants.TALON_CURRENT_SPIKE)
             joystickInput = 0.0
         if(Math.signum(joystickInput) as Int == OI.JOYSTICK_UP)

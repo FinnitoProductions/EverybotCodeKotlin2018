@@ -15,8 +15,8 @@ class IntakeOuttakeManual : Command() {
     }
 
     override fun execute() {
-        var joystickIntakeInput = MathUtil.mapOutput(OI.gamepad.leftTrigger, Global.DEADBAND)
-        var joystickOuttakeInput = OI.gamepad.rightTrigger
+        var joystickIntakeInput = MathUtil.mapOutput(OI.driverGamepad.leftTrigger, Global.DEADBAND)
+        var joystickOuttakeInput = MathUtil.mapOutput(OI.driverGamepad.rightTrigger, Global.DEADBAND)
         if (joystickIntakeInput > joystickOuttakeInput) {
             Intake.intakeOuttakeCube(joystickIntakeInput, Intake.IntakeDirection.IN)
         } else {

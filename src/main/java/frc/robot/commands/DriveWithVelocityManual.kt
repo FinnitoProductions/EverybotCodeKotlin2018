@@ -21,8 +21,8 @@ class DriveWithVelocityManual : Command() {
      * to the desired values to move the robot optimally.
      */
     override fun execute() {
-        speed = MathUtil.mapOutput(OI.gamepad.leftY, Global.DEADBAND)
-        turn = MathUtil.mapOutput(OI.gamepad.leftX, Global.DEADBAND)
+        speed = MathUtil.mapOutput(OI.driverGamepad.leftY, Global.DEADBAND)
+        turn = MathUtil.mapOutput(OI.driverGamepad.leftX, Global.DEADBAND)
         Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
     }
 
