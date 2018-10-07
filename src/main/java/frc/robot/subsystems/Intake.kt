@@ -45,11 +45,11 @@ object Intake : Subsystem() {
     private fun setCurrentLimits() {
         leftTalon.configPeakCurrentDuration(IntakeConstants.TALON_PEAK_TIME, Global.TIMEOUT)
         leftTalon.configPeakCurrentLimit(IntakeConstants.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_LEFT_CURRENT)
+        leftTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
         leftTalon.enableCurrentLimit(IntakeConstants.TALON_CURRENT_ENABLE)
         rightTalon.configPeakCurrentDuration(IntakeConstants.TALON_PEAK_TIME, Global.TIMEOUT)
         rightTalon.configPeakCurrentLimit(IntakeConstants.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_RIGHT_CURRENT)
+        rightTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
         rightTalon.enableCurrentLimit(IntakeConstants.TALON_CURRENT_ENABLE)
 
     }
