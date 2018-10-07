@@ -2,6 +2,7 @@ package frc.robot
 
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
+import frc.robot.util.MathUtil
 import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
 
 object OI() {
@@ -14,11 +15,14 @@ object OI() {
     init {
         initBindings()
     }
-    fun initBindings() {
-        OI.driverGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        OI.driverGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
-        OI.operatorGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        OI.operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+    fun initBindings() {
+        if (MathUtil.mapOutput(OI.driverGamepad.rightTrigger, Global.DEADBAND) != 0.0) {
+            driverGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+            driverGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+
+            operatorGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+            operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+        }
     }
 }
