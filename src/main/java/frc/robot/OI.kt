@@ -5,7 +5,7 @@ import frc.robot.subsystems.Arm
 import frc.robot.util.MathUtil
 import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
 
-object OI() {
+object OI {
     val DRIVER_PORT = 0
     val OPERATOR_PORT = 1
     val driverGamepad = GamepadWrapper(DRIVER_PORT)

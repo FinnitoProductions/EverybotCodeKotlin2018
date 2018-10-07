@@ -25,7 +25,9 @@ class IntakeOuttakeManual : Command() {
 
         var leftOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.leftY, Global.DEADBAND)
         var rightOperatorJoystickInput = MathUtil.mapOutput(OI.operatorGamepad.rightY, Global.DEADBAND)
-        Intake.intakeOuttakeCube(leftOperatorJoystickInput, rightOperatorJoystickInput, Intake.IntakeDirection.IN, Intake.IntakeDirection.IN)
+        Intake.intakeOuttakeCube(leftOperatorJoystickInput, rightOperatorJoystickInput,
+                if (Math.signum(leftOperatorJoystickInput) as Int == OI.JOYSTICK_UP) Intake.IntakeDirection.OUT else Intake.IntakeDirection.IN,
+                if (Math.signum(rightOperatorJoystickInput) as Int == OI.JOYSTICK_UP) Intake.IntakeDirection.OUT else Intake.IntakeDirection.IN)
 
 
 

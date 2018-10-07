@@ -7,7 +7,7 @@ import frc.robot.OI
 import frc.robot.subsystems.Arm
 import frc.robot.util.MathUtil
 
-class MoveArmManual() : Command() {
+class MoveArmManual : Command() {
 
     init {
         requires(Arm)
