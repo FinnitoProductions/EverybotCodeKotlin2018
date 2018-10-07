@@ -32,6 +32,7 @@ object Robot : TimedRobot() {
     override fun autonomousInit() {
         Drivetrain.talonInit()
         Intake.talonInit()
+        Arm.talonInit()
     }
 
     /**
