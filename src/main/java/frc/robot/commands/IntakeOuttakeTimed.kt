@@ -18,5 +18,6 @@ class IntakeOuttakeTimed(val time: Double, val output: Double, val direction: In
     }
 
     override fun isFinished(): Boolean {
-        return  Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND)
+        return  Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND
+    }
 }

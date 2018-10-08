@@ -41,6 +41,8 @@ object IntakeConstants {
     const val MAX_OUTTAKE_SPEED = 1.0
     const val MIN_OUTTAKE_SPEED = 0.0
     const val TALON_INTAKE_DIRECTION = 1
+    const val DEFAULT_INTAKE_SPEED = 1.0
+    const val DEFAULT_OUTTAKE_SPEED = -1.0
 
 }
 

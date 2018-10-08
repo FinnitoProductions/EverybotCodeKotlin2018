@@ -1,5 +1,6 @@
 package frc.robot
 
+import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
 import frc.robot.util.MathUtil
@@ -20,10 +21,20 @@ object OI {
     }
 
     fun initBindings() {
+
+        //driver arm buttons
         driverGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
         driverGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
+        //operator arm buttons
         operatorGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
         operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+
+        //operator intake and outtake buttons
+        operatorGamepad.buttonB.whenPressed(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED))
+        operatorGamepad.buttonB.cancelWhenReleased(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED))
+        operatorGamepad.buttonX.whenPressed(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED))
+        operatorGamepad.buttonX.cancelWhenReleased(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED))
+
     }
 }
