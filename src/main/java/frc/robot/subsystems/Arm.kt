@@ -48,7 +48,7 @@ object Arm : Subsystem() {
      * Sets armTalon's percent output based on a specified direction.
      *
      * @param output percent at which motor will turn
-     * @param armDirection direction arm will move
+     * @param direction direction arm will move
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
         var modifiedOutput = MathUtil.constrainOutput(output, ArmConstants.MAX_MOTION_SPEED, ArmConstants.MIN_MOTION_SPEED)
