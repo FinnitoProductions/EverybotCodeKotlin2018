@@ -3,11 +3,11 @@ package frc.robot.util
 import frc.robot.Global
 
 object MathUtil {
-    fun constrainOutput(output: Double, maxSpeed: Double, minSpeed: Double) : Double {
-        if(output > maxSpeed) {
+    fun constrainOutput(output: Double, maxSpeed: Double, minSpeed: Double): Double {
+        if (output > maxSpeed) {
             return maxSpeed
         }
-        if(output < minSpeed) {
+        if (output < minSpeed) {
             return minSpeed
         }
         return output

@@ -81,15 +81,13 @@ object Intake : Subsystem() {
         var leftModifiedOutput = MathUtil.constrainOutput(leftOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
         var rightModifiedOutput = MathUtil.constrainOutput(rightOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput* IntakeConstants.TALON_INTAKE_DIRECTION)
-        }
-        else {
+            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+        } else {
             leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
         }
-        if(rightDirection == IntakeDirection.IN) {
+        if (rightDirection == IntakeDirection.IN) {
             rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
-        }
-        else {
+        } else {
             rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
         }
 

@@ -52,10 +52,9 @@ object Arm : Subsystem() {
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
         var modifiedOutput = MathUtil.constrainOutput(output, ArmConstants.MAX_MOTION_SPEED, ArmConstants.MIN_MOTION_SPEED)
-        if(direction == ArmDirection.UP) {
+        if (direction == ArmDirection.UP) {
             armTalon.set(ControlMode.PercentOutput, modifiedOutput * ArmConstants.TALON_MOTION_DIRECTION)
-        }
-        else {
+        } else {
             armTalon.set(ControlMode.PercentOutput, modifiedOutput * -ArmConstants.TALON_MOTION_DIRECTION)
         }
     }

@@ -30,12 +30,11 @@ class IntakeOuttakeManual : Command() {
                 if (Math.signum(rightOperatorJoystickInput).toInt() == OI.JOYSTICK_UP) Intake.IntakeDirection.OUT else Intake.IntakeDirection.IN)
 
 
-
     }
 
     /**
      * Determines that command never ends.
      */
-    override fun isFinished(): Boolean = false
+    override fun isFinished() = false
 
 }

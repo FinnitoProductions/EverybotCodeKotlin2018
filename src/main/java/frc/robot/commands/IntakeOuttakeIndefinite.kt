@@ -11,6 +11,8 @@ class IntakeOuttakeIndefinite(val speed: Double, val direction: Intake.IntakeDir
 
     override fun isFinished() = false
 
-    override fun execute() = Intake.intakeOuttakeCube(speed, direction)
+    override fun execute() {
+        Intake.intakeOuttakeCube(speed, direction)
+    }
 
 }
