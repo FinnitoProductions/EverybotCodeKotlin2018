@@ -3,7 +3,6 @@ package frc.robot
 import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
-import frc.robot.util.MathUtil
 import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
 
 object OI {
@@ -31,10 +30,12 @@ object OI {
         operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
         //operator intake and outtake buttons
-        operatorGamepad.buttonB.whenPressed(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED))
-        operatorGamepad.buttonB.cancelWhenReleased(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED))
-        operatorGamepad.buttonX.whenPressed(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED))
-        operatorGamepad.buttonX.cancelWhenReleased(IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED))
+        val intakeCommand = IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED)
+        operatorGamepad.buttonB.whenPressed(intakeCommand)
+        operatorGamepad.buttonB.cancelWhenReleased(intakeCommand)
+        val outtakeCommand = IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED)
+        operatorGamepad.buttonX.whenPressed(outtakeCommand)
+        operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 
     }
 }

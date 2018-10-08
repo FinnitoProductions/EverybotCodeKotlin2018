@@ -2,7 +2,6 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.command.Command
 import frc.robot.ArmConstants
-import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Arm
 import frc.robot.util.MathUtil
