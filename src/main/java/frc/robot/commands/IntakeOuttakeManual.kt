@@ -2,8 +2,6 @@ package frc.robot.commands
 
 
 import edu.wpi.first.wpilibj.command.Command
-import frc.robot.Global
-import frc.robot.IntakeConstants
 import frc.robot.OI
 import frc.robot.subsystems.Intake
 import frc.robot.util.MathUtil

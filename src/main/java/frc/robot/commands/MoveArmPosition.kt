@@ -1,7 +1,6 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj.command.Command
-import frc.robot.ArmConstants
 import frc.robot.OI
 import frc.robot.subsystems.Arm
 
@@ -12,7 +11,7 @@ class MoveArmPosition(val speed: Double, val direction: Arm.ArmDirection) : Comm
     }
 
     override fun isFinished(): Boolean {
-        return Arm.getTalonCurrent() >= ArmConstants.TALON_CURRENT_SPIKE || Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND
+        return Arm.getTalonCurrent() >= Arm.ArmConstants.TALON_CURRENT_SPIKE || Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND
     }
 
     override fun execute() {

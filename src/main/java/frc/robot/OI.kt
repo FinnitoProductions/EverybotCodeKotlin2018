@@ -23,18 +23,18 @@ object OI {
     fun initBindings() {
 
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        driverGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
         //operator arm buttons
-        operatorGamepad.buttonA.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        operatorGamepad.buttonY.whenPressed(MoveArmPosition(ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
+        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.ArmConstants.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
 
         //operator intake and outtake buttons
-        val intakeCommand = IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)
+        val intakeCommand = IntakeOuttakeIndefinite(Intake.IntakeConstants.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)
         operatorGamepad.buttonB.whenPressed(intakeCommand)
         operatorGamepad.buttonB.cancelWhenReleased(intakeCommand)
-        val outtakeCommand = IntakeOuttakeIndefinite(IntakeConstants.DEFAULT_OUTTAKE_SPEED, Intake.IntakeDirection.OUT)
+        val outtakeCommand = IntakeOuttakeIndefinite(Intake.IntakeConstants.DEFAULT_OUTTAKE_SPEED, Intake.IntakeDirection.OUT)
         operatorGamepad.buttonX.whenPressed(outtakeCommand)
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 

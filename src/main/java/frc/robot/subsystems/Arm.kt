@@ -1,6 +1,7 @@
 package frc.robot.subsystems
 
 import com.ctre.phoenix.motorcontrol.ControlMode
+import com.ctre.phoenix.motorcontrol.NeutralMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
@@ -11,6 +12,20 @@ import frc.robot.util.MathUtil
 object Arm : Subsystem() {
 
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
+
+    object ArmConstants {
+        const val ARM_INVERTED = true
+        var TALON_NEUTRAL_MODE = NeutralMode.Brake
+        const val TALON_PEAK_CURRENT = 0
+        const val TALON_CONTINUOUS_CURRENT = 0
+        const val TALON_PEAK_TIME = 0
+        const val TALON_CURRENT_ENABLE = true
+        const val MAX_MOTION_SPEED = 1.0
+        const val MIN_MOTION_SPEED = 0.0
+        const val TALON_MOTION_DIRECTION = 1
+        const val TALON_CURRENT_SPIKE = 0.0
+        const val MAX_EXTREME_SPEED = 1.0
+    }
 
     enum class ArmDirection {
         UP, DOWN

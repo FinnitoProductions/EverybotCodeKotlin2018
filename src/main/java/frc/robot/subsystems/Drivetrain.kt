@@ -3,6 +3,7 @@ package frc.robot.subsystems
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import com.ctre.phoenix.motorcontrol.ControlMode
+import com.ctre.phoenix.motorcontrol.NeutralMode
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.DriveWithVelocityManual
 
@@ -12,6 +13,21 @@ object Drivetrain : Subsystem() {
     val rightMaster: TalonSRX
     val leftFollower: TalonSRX
     val rightFollower: TalonSRX
+
+    object DrivetrainConstants {
+
+        const val LEFT_MASTER_INVERTED = true
+        const val RIGHT_MASTER_INVERTED = true
+        const val LEFT_FOLLOWER_INVERTED = true
+        const val RIGHT_FOLLOWER_INVERTED = true
+        var TALON_NEUTRAL_MODE = NeutralMode.Brake
+        const val TALON_PEAK_RIGHT_CURRENT = 50
+        const val TALON_PEAK_LEFT_CURRENT = 50
+        const val TALON_CONTINUOUS_RIGHT_CURRENT = 20
+        const val TALON_CONTINUOUS_LEFT_CURRENT = 20
+        const val TALON_PEAK_TIME = 500
+        const val TALON_CURRENT_ENABLE = true
+    }
 
     init {
         leftMaster = TalonSRX(CAN_IDs.LEFT_MASTER_ID)

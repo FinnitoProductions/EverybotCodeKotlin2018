@@ -1,9 +1,9 @@
 package frc.robot.subsystems
 
 import com.ctre.phoenix.motorcontrol.ControlMode
+import com.ctre.phoenix.motorcontrol.NeutralMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.wpi.first.wpilibj.command.Subsystem
-import frc.robot.IntakeConstants
 import frc.robot.CAN_IDs
 import frc.robot.Global
 import frc.robot.commands.IntakeOuttakeManual
@@ -12,6 +12,24 @@ import frc.robot.util.MathUtil
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
     val rightTalon: TalonSRX
+
+    object IntakeConstants {
+        const val LEFT_TALON_INVERTED = true
+        const val RIGHT_TALON_INVERTED = true
+        var TALON_NEUTRAL_MODE = NeutralMode.Brake
+        const val TALON_PEAK_RIGHT_CURRENT = 0
+        const val TALON_PEAK_LEFT_CURRENT = 0
+        const val TALON_CONTINUOUS_LEFT_CURRENT = 0
+        const val TALON_CONTINUOUS_RIGHT_CURRENT = 0
+        const val TALON_PEAK_TIME = 0
+        const val TALON_CURRENT_ENABLE = true
+        const val MAX_OUTTAKE_SPEED = 1.0
+        const val MIN_OUTTAKE_SPEED = 0.0
+        const val TALON_INTAKE_DIRECTION = 1
+        const val DEFAULT_INTAKE_SPEED = 1.0
+        const val DEFAULT_OUTTAKE_SPEED = -1.0
+
+    }
 
     enum class IntakeDirection {
         IN, OUT
