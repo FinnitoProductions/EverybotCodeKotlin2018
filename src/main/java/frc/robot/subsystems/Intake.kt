@@ -13,23 +13,20 @@ object Intake : Subsystem() {
     val leftTalon: TalonSRX
     val rightTalon: TalonSRX
 
-    object IntakeConstants {
-        const val LEFT_TALON_INVERTED = true
-        const val RIGHT_TALON_INVERTED = true
-        var TALON_NEUTRAL_MODE = NeutralMode.Brake
-        const val TALON_PEAK_RIGHT_CURRENT = 0
-        const val TALON_PEAK_LEFT_CURRENT = 0
-        const val TALON_CONTINUOUS_LEFT_CURRENT = 0
-        const val TALON_CONTINUOUS_RIGHT_CURRENT = 0
-        const val TALON_PEAK_TIME = 0
-        const val TALON_CURRENT_ENABLE = true
-        const val MAX_OUTTAKE_SPEED = 1.0
-        const val MIN_OUTTAKE_SPEED = 0.0
-        const val TALON_INTAKE_DIRECTION = 1
-        const val DEFAULT_INTAKE_SPEED = 1.0
-        const val DEFAULT_OUTTAKE_SPEED = -1.0
-
-    }
+    const val LEFT_TALON_INVERTED = true
+    const val RIGHT_TALON_INVERTED = true
+    var TALON_NEUTRAL_MODE = NeutralMode.Brake
+    const val TALON_PEAK_RIGHT_CURRENT = 0
+    const val TALON_PEAK_LEFT_CURRENT = 0
+    const val TALON_CONTINUOUS_LEFT_CURRENT = 0
+    const val TALON_CONTINUOUS_RIGHT_CURRENT = 0
+    const val TALON_PEAK_TIME = 0
+    const val TALON_CURRENT_ENABLE = true
+    const val MAX_OUTTAKE_SPEED = 1.0
+    const val MIN_OUTTAKE_SPEED = 0.0
+    const val TALON_INTAKE_DIRECTION = 1
+    const val DEFAULT_INTAKE_SPEED = 1.0
+    const val DEFAULT_OUTTAKE_SPEED = -1.0
 
     enum class IntakeDirection {
         IN, OUT
@@ -49,26 +46,26 @@ object Intake : Subsystem() {
     }
 
     private fun invertTalons() {
-        leftTalon.inverted = IntakeConstants.LEFT_TALON_INVERTED
-        rightTalon.inverted = IntakeConstants.RIGHT_TALON_INVERTED
+        leftTalon.inverted = Intake.LEFT_TALON_INVERTED
+        rightTalon.inverted = Intake.RIGHT_TALON_INVERTED
 
     }
 
     private fun setNeutralModes() {
-        leftTalon.setNeutralMode(IntakeConstants.TALON_NEUTRAL_MODE)
-        rightTalon.setNeutralMode(IntakeConstants.TALON_NEUTRAL_MODE)
+        leftTalon.setNeutralMode(Intake.TALON_NEUTRAL_MODE)
+        rightTalon.setNeutralMode(Intake.TALON_NEUTRAL_MODE)
 
     }
 
     private fun setCurrentLimits() {
-        leftTalon.configPeakCurrentDuration(IntakeConstants.TALON_PEAK_TIME, Global.TIMEOUT)
-        leftTalon.configPeakCurrentLimit(IntakeConstants.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-        leftTalon.enableCurrentLimit(IntakeConstants.TALON_CURRENT_ENABLE)
-        rightTalon.configPeakCurrentDuration(IntakeConstants.TALON_PEAK_TIME, Global.TIMEOUT)
-        rightTalon.configPeakCurrentLimit(IntakeConstants.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightTalon.configContinuousCurrentLimit(IntakeConstants.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-        rightTalon.enableCurrentLimit(IntakeConstants.TALON_CURRENT_ENABLE)
+        leftTalon.configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
+        leftTalon.configPeakCurrentLimit(Intake.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
+        leftTalon.configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
+        leftTalon.enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
+        rightTalon.configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
+        rightTalon.configPeakCurrentLimit(Intake.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
+        rightTalon.configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
+        rightTalon.enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
 
     }
 
@@ -96,17 +93,17 @@ object Intake : Subsystem() {
      * @param rightDirection enum representing right wheel's direction
      */
     fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
-        var leftModifiedOutput = MathUtil.constrainOutput(leftOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
-        var rightModifiedOutput = MathUtil.constrainOutput(rightOutput, IntakeConstants.MAX_OUTTAKE_SPEED, IntakeConstants.MIN_OUTTAKE_SPEED)
+        var leftModifiedOutput = MathUtil.constrainOutput(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
+        var rightModifiedOutput = MathUtil.constrainOutput(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * TALON_INTAKE_DIRECTION)
         } else {
-            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
+            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * -TALON_INTAKE_DIRECTION)
         }
         if (rightDirection == IntakeDirection.IN) {
-            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * -IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * -TALON_INTAKE_DIRECTION)
         } else {
-            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * IntakeConstants.TALON_INTAKE_DIRECTION)
+            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * TALON_INTAKE_DIRECTION)
         }
 
     }

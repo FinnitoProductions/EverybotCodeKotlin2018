@@ -14,20 +14,17 @@ object Drivetrain : Subsystem() {
     val leftFollower: TalonSRX
     val rightFollower: TalonSRX
 
-    object DrivetrainConstants {
-
-        const val LEFT_MASTER_INVERTED = true
-        const val RIGHT_MASTER_INVERTED = true
-        const val LEFT_FOLLOWER_INVERTED = true
-        const val RIGHT_FOLLOWER_INVERTED = true
-        var TALON_NEUTRAL_MODE = NeutralMode.Brake
-        const val TALON_PEAK_RIGHT_CURRENT = 50
-        const val TALON_PEAK_LEFT_CURRENT = 50
-        const val TALON_CONTINUOUS_RIGHT_CURRENT = 20
-        const val TALON_CONTINUOUS_LEFT_CURRENT = 20
-        const val TALON_PEAK_TIME = 500
-        const val TALON_CURRENT_ENABLE = true
-    }
+    const val LEFT_MASTER_INVERTED = true
+    const val RIGHT_MASTER_INVERTED = true
+    const val LEFT_FOLLOWER_INVERTED = true
+    const val RIGHT_FOLLOWER_INVERTED = true
+    var TALON_NEUTRAL_MODE = NeutralMode.Brake
+    const val TALON_PEAK_RIGHT_CURRENT = 50
+    const val TALON_PEAK_LEFT_CURRENT = 50
+    const val TALON_CONTINUOUS_RIGHT_CURRENT = 20
+    const val TALON_CONTINUOUS_LEFT_CURRENT = 20
+    const val TALON_PEAK_TIME = 500
+    const val TALON_CURRENT_ENABLE = true
 
     init {
         leftMaster = TalonSRX(CAN_IDs.LEFT_MASTER_ID)
@@ -50,28 +47,28 @@ object Drivetrain : Subsystem() {
     }
 
     private fun invertTalons() {
-        leftMaster.inverted = DrivetrainConstants.LEFT_MASTER_INVERTED
-        rightMaster.inverted = DrivetrainConstants.RIGHT_MASTER_INVERTED
-        leftFollower.inverted = DrivetrainConstants.LEFT_FOLLOWER_INVERTED
-        rightFollower.inverted = DrivetrainConstants.RIGHT_FOLLOWER_INVERTED
+        leftMaster.inverted = LEFT_MASTER_INVERTED
+        rightMaster.inverted = RIGHT_MASTER_INVERTED
+        leftFollower.inverted = LEFT_FOLLOWER_INVERTED
+        rightFollower.inverted = RIGHT_FOLLOWER_INVERTED
     }
 
     private fun setNeutralModes() {
-        leftMaster.setNeutralMode(DrivetrainConstants.TALON_NEUTRAL_MODE)
-        rightMaster.setNeutralMode(DrivetrainConstants.TALON_NEUTRAL_MODE)
-        leftFollower.setNeutralMode(DrivetrainConstants.TALON_NEUTRAL_MODE)
-        rightFollower.setNeutralMode(DrivetrainConstants.TALON_NEUTRAL_MODE)
+        leftMaster.setNeutralMode(TALON_NEUTRAL_MODE)
+        rightMaster.setNeutralMode(TALON_NEUTRAL_MODE)
+        leftFollower.setNeutralMode(TALON_NEUTRAL_MODE)
+        rightFollower.setNeutralMode(TALON_NEUTRAL_MODE)
     }
 
     private fun setCurrentLimits() {
-        leftMaster.configPeakCurrentDuration(DrivetrainConstants.TALON_PEAK_TIME, Global.TIMEOUT)
-        leftMaster.configPeakCurrentLimit(DrivetrainConstants.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-        leftMaster.enableCurrentLimit(DrivetrainConstants.TALON_CURRENT_ENABLE)
-        rightMaster.configPeakCurrentDuration(DrivetrainConstants.TALON_PEAK_TIME, Global.TIMEOUT)
-        rightMaster.configPeakCurrentLimit(DrivetrainConstants.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightMaster.configContinuousCurrentLimit(DrivetrainConstants.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-        rightMaster.enableCurrentLimit(DrivetrainConstants.TALON_CURRENT_ENABLE)
+        leftMaster.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+        leftMaster.configPeakCurrentLimit(TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
+        leftMaster.configContinuousCurrentLimit(TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
+        leftMaster.enableCurrentLimit(TALON_CURRENT_ENABLE)
+        rightMaster.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+        rightMaster.configPeakCurrentLimit(TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
+        rightMaster.configContinuousCurrentLimit(TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
+        rightMaster.enableCurrentLimit(TALON_CURRENT_ENABLE)
 
     }
 

@@ -11,7 +11,7 @@ class MoveArmPosition(val speed: Double, val direction: Arm.ArmDirection) : Comm
     }
 
     override fun isFinished(): Boolean {
-        return Arm.getTalonCurrent() >= Arm.ArmConstants.TALON_CURRENT_SPIKE || Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND
+        return Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE || Math.abs(OI.driverGamepad.rightTrigger) < OI.XBOX_DEADBAND
     }
 
     override fun execute() {

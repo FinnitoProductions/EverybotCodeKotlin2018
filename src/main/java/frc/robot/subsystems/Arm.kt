@@ -13,19 +13,17 @@ object Arm : Subsystem() {
 
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
 
-    object ArmConstants {
-        const val ARM_INVERTED = true
-        var TALON_NEUTRAL_MODE = NeutralMode.Brake
-        const val TALON_PEAK_CURRENT = 0
-        const val TALON_CONTINUOUS_CURRENT = 0
-        const val TALON_PEAK_TIME = 0
-        const val TALON_CURRENT_ENABLE = true
-        const val MAX_MOTION_SPEED = 1.0
-        const val MIN_MOTION_SPEED = 0.0
-        const val TALON_MOTION_DIRECTION = 1
-        const val TALON_CURRENT_SPIKE = 0.0
-        const val MAX_EXTREME_SPEED = 1.0
-    }
+    const val ARM_INVERTED = true
+    var TALON_NEUTRAL_MODE = NeutralMode.Brake
+    const val TALON_PEAK_CURRENT = 0
+    const val TALON_CONTINUOUS_CURRENT = 0
+    const val TALON_PEAK_TIME = 0
+    const val TALON_CURRENT_ENABLE = true
+    const val MAX_MOTION_SPEED = 1.0
+    const val MIN_MOTION_SPEED = 0.0
+    const val TALON_MOTION_DIRECTION = 1
+    const val TALON_CURRENT_SPIKE = 0.0
+    const val MAX_EXTREME_SPEED = 1.0
 
     enum class ArmDirection {
         UP, DOWN
@@ -44,18 +42,18 @@ object Arm : Subsystem() {
     }
 
     private fun invertTalons() {
-        armTalon.inverted = ArmConstants.ARM_INVERTED
+        armTalon.inverted = ARM_INVERTED
     }
 
     private fun setNeutralModes() {
-        armTalon.setNeutralMode(ArmConstants.TALON_NEUTRAL_MODE)
+        armTalon.setNeutralMode(TALON_NEUTRAL_MODE)
     }
 
     private fun setCurrentLimits() {
-        armTalon.configPeakCurrentDuration(ArmConstants.TALON_PEAK_TIME, Global.TIMEOUT)
-        armTalon.configPeakCurrentLimit(ArmConstants.TALON_PEAK_CURRENT, Global.TIMEOUT)
-        armTalon.configContinuousCurrentLimit(ArmConstants.TALON_CONTINUOUS_CURRENT, Global.TIMEOUT)
-        armTalon.enableCurrentLimit(ArmConstants.TALON_CURRENT_ENABLE)
+        armTalon.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+        armTalon.configPeakCurrentLimit(TALON_PEAK_CURRENT, Global.TIMEOUT)
+        armTalon.configContinuousCurrentLimit(TALON_CONTINUOUS_CURRENT, Global.TIMEOUT)
+        armTalon.enableCurrentLimit(TALON_CURRENT_ENABLE)
 
     }
 
@@ -66,11 +64,11 @@ object Arm : Subsystem() {
      * @param direction direction arm will move
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
-        var modifiedOutput = MathUtil.constrainOutput(output, ArmConstants.MAX_MOTION_SPEED, ArmConstants.MIN_MOTION_SPEED)
+        var modifiedOutput = MathUtil.constrainOutput(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
         if (direction == ArmDirection.UP) {
-            armTalon.set(ControlMode.PercentOutput, modifiedOutput * ArmConstants.TALON_MOTION_DIRECTION)
+            armTalon.set(ControlMode.PercentOutput, modifiedOutput * TALON_MOTION_DIRECTION)
         } else {
-            armTalon.set(ControlMode.PercentOutput, modifiedOutput * -ArmConstants.TALON_MOTION_DIRECTION)
+            armTalon.set(ControlMode.PercentOutput, modifiedOutput * -TALON_MOTION_DIRECTION)
         }
     }
 
