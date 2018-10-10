@@ -14,7 +14,7 @@ object Arm : Subsystem() {
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
 
     const val ARM_INVERTED = true
-    var TALON_NEUTRAL_MODE = NeutralMode.Brake
+    val TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_CURRENT = 0
     const val TALON_CONTINUOUS_CURRENT = 0
     const val TALON_PEAK_TIME = 0
