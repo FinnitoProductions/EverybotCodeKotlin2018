@@ -64,7 +64,7 @@ object Arm : Subsystem() {
      * @param direction direction arm will move
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
-        var modifiedOutput = MathUtil.constrainOutput(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
+        val modifiedOutput = MathUtil.constrainOutput(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
         if (direction == ArmDirection.UP) {
             armTalon.set(ControlMode.PercentOutput, modifiedOutput * TALON_MOTION_DIRECTION)
         } else {
