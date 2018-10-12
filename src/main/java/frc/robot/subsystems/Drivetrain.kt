@@ -26,6 +26,16 @@ object Drivetrain : Subsystem() {
     const val TALON_PEAK_TIME = 500
     const val TALON_CURRENT_ENABLE = true
 
+    const val KP_POSITION_LEFT = 0.0
+    const val KI_POSITION_LEFT = 0.0
+    const val KD_POSITION_LEFT = 0.0
+    const val KF_POSITION_LEFT = 0.0
+
+    const val KP_POSIITION_RIGHT = 0.0
+    const val KI_POSIITION_RIGHT = 0.0
+    const val KD_POSIITON_RIGHT = 0.0
+    const val KF_POSITION_RIGHT = 0.0
+
     init {
         leftMaster = TalonSRX(CAN_IDs.LEFT_MASTER_ID)
         rightMaster = TalonSRX(CAN_IDs.RIGHT_MASTER_ID)

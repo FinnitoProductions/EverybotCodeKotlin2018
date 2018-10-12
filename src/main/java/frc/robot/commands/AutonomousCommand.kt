@@ -5,7 +5,7 @@ import frc.robot.auto.AutoMode
 
 class AutonomousCommand : CommandGroup {
 
-    constructor(mode : AutoMode) {
+    constructor(mode: AutoMode) {
         addSequential(mode)
     }
 
