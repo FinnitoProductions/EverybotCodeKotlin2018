@@ -6,9 +6,6 @@ import frc.robot.subsystems.Drivetrain
 import frc.robot.util.MathUtil
 
 class DriveWithVelocityManual : Command() {
-    var speed = 0.0
-    var turn = 0.0
-
     init {
         requires(Drivetrain)
     }
@@ -18,8 +15,8 @@ class DriveWithVelocityManual : Command() {
      * to the desired values to move the robot optimally.
      */
     override fun execute() {
-        speed = MathUtil.mapOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND)
-        turn = MathUtil.mapOutput(OI.driverGamepad.leftX, OI.LOGITECH_DEADBAND)
+        val speed = MathUtil.mapOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND)
+        val turn = MathUtil.mapOutput(OI.driverGamepad.leftX, OI.LOGITECH_DEADBAND)
         Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
     }
 
