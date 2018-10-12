@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup
 
 abstract class AutoMode : CommandGroup() {
 
-    abstract fun addCommand()
+    abstract fun addCommands()
     init {
-        addCommand()
+        addCommands()
     }
 }
