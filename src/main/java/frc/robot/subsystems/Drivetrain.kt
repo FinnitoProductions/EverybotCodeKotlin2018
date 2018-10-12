@@ -31,10 +31,12 @@ object Drivetrain : Subsystem() {
     const val KD_POSITION_LEFT = 0.0
     const val KF_POSITION_LEFT = 0.0
 
-    const val KP_POSIITION_RIGHT = 0.0
-    const val KI_POSIITION_RIGHT = 0.0
-    const val KD_POSIITON_RIGHT = 0.0
+    const val KP_POSITION_RIGHT = 0.0
+    const val KI_POSITION_RIGHT = 0.0
+    const val KD_POSITION_RIGHT = 0.0
     const val KF_POSITION_RIGHT = 0.0
+
+    const val POSITION_PID_SLOT = 0
 
     init {
         leftMaster = TalonSRX(CAN_IDs.LEFT_MASTER_ID)
@@ -49,6 +51,7 @@ object Drivetrain : Subsystem() {
         invertTalons()
         setNeutralModes()
         setCurrentLimits()
+        setUpPositionPID()
     }
 
     private fun followMasters() {
@@ -91,6 +94,16 @@ object Drivetrain : Subsystem() {
                 rightOutputBase / divisor)
     }
 
+    private fun setUpPositionPID() {
+        leftMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
+        leftMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
+        leftMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_LEFT, Global.TIMEOUT)
+        leftMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_LEFT, Global.TIMEOUT)
+        rightMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_RIGHT, Global.TIMEOUT)
+        rightMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_RIGHT, Global.TIMEOUT)
+        rightMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_RIGHT, Global.TIMEOUT)
+        rightMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
+    }
     override fun initDefaultCommand() {
         defaultCommand = DriveWithVelocityManual()
     }
