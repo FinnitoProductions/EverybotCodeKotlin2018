@@ -7,7 +7,9 @@ import frc.robot.Global
 import frc.robot.subsystems.Drivetrain
 
 /**
+ *  A DriveToPosition command drives the robot to a specified position using PID.
  *
+ *  @param  position    setpoint
  */
 class DriveToPosition(val position: Double) : Command() {
 
@@ -18,8 +20,8 @@ class DriveToPosition(val position: Double) : Command() {
         Drivetrain.rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.leftMaster.selectProfileSlot(Drivetrain.POSITION_PID_SLOT, Drivetrain.PID_PRIMARY)
         Drivetrain.rightMaster.selectProfileSlot(Drivetrain.POSITION_PID_SLOT, Drivetrain.PID_PRIMARY)
-        Drivetrain.leftMaster.setSensorPhase(Drivetrain.LEFT_PHASE)
-        Drivetrain.rightMaster.setSensorPhase(Drivetrain.RIGHT_PHASE)
+        Drivetrain.leftMaster.setSensorPhase(Drivetrain.LEFT_ENCODER_PHASE)
+        Drivetrain.rightMaster.setSensorPhase(Drivetrain.RIGHT_ENCODER_PHASE)
         Drivetrain.leftMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.rightMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
     }
