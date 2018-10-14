@@ -44,11 +44,10 @@ object Drivetrain : Subsystem() {
 
     const val ALLOWABLE_POSITION_ERROR = 1.0
 
-    const val LEFT_PHASE = false
-    const val RIGHT_PHASE = false
+    const val LEFT_ENCODER_PHASE = false
+    const val RIGHT_ENCODER_PHASE = false
 
     const val INITIAL_POSITION = 0
-
 
 
     init {
