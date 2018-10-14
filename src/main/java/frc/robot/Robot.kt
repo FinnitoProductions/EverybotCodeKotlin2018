@@ -2,6 +2,7 @@ package frc.robot
 
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
+import frc.robot.commands.DriveToPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
@@ -56,6 +57,8 @@ object Robot : TimedRobot() {
      */
     override fun teleopPeriodic() {
         Scheduler.getInstance().run()
+        Drivetrain.leftMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY)
+        Drivetrain.rightMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY)
     }
 
     /**
