@@ -1,13 +1,14 @@
 package frc.robot.commands
 
-import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.ControlMode.Position
 import com.ctre.phoenix.motorcontrol.FeedbackDevice
-import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.wpi.first.wpilibj.command.Command
 import frc.robot.Global
 import frc.robot.subsystems.Drivetrain
 
+/**
+ *
+ */
 class DriveToPosition(val position: Double) : Command() {
 
     var currentPosition = 0
