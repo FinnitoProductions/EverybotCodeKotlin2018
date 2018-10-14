@@ -5,16 +5,16 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice
 import edu.wpi.first.wpilibj.command.Command
 import frc.robot.Global
 import frc.robot.subsystems.Drivetrain
+import harkerrobolib.util.Conversions
 
 /**
  *  A DriveToPosition command drives the robot to a specified position using PID.
  *
- *  @param  position    setpoint
+ *  @param  position    setpoint in feet
  */
 class DriveToPosition(val position: Double) : Command() {
 
-    var currentPosition = 0
-
+    val convertedPosition = Conversions.convertPosition(Conversions.PositionUnit.FEET,position, Conversions.PositionUnit.ENCODER_UNITS)
     override fun initialize() {
         Drivetrain.leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative ,Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
@@ -35,6 +35,7 @@ class DriveToPosition(val position: Double) : Command() {
     }
 
     override fun execute() {
-        Drivetrain.leftMaster.set(Position, position)
+        Drivetrain.leftMaster.set(Position, convertedPosition)
+        Drivetrain.rightMaster.set(Position, convertedPosition)
     }
 }
