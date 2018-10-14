@@ -15,13 +15,16 @@ class DriveToPosition(val position: Double) : Command() {
 
     var currentPosition = 0
 
-    init {
+    override fun initialize() {
         Drivetrain.leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative ,Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
+
         Drivetrain.leftMaster.selectProfileSlot(Drivetrain.POSITION_PID_SLOT, Drivetrain.PID_PRIMARY)
         Drivetrain.rightMaster.selectProfileSlot(Drivetrain.POSITION_PID_SLOT, Drivetrain.PID_PRIMARY)
+
         Drivetrain.leftMaster.setSensorPhase(Drivetrain.LEFT_ENCODER_PHASE)
         Drivetrain.rightMaster.setSensorPhase(Drivetrain.RIGHT_ENCODER_PHASE)
+
         Drivetrain.leftMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.rightMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Drivetrain.PID_PRIMARY, Global.TIMEOUT)
     }
