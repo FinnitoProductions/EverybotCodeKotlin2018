@@ -29,7 +29,7 @@ object Drivetrain : Subsystem() {
 
     //PID constants
     const val  PID_PRIMARY = 0;
-    const val PID_SECONDARY = 1;
+    const val PID_AUXILIARY = 1;
     const val KP_POSITION_LEFT = 0.0
     const val KI_POSITION_LEFT = 0.0
     const val KD_POSITION_LEFT = 0.0
