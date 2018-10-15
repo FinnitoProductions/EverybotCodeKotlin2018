@@ -3,6 +3,8 @@ package frc.robot
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
+import frc.robot.auto.AutoMode
+import frc.robot.commands.AutonomousCommand
 import frc.robot.commands.DriveToPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
@@ -35,6 +37,8 @@ object Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
+        AutonomousCommand()
+        AutonomousCommand(Baseline().start())
     }
 
     /**
