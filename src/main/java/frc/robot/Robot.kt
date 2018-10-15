@@ -2,6 +2,10 @@ package frc.robot
 
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
+import frc.robot.auto.AutoMode
+import frc.robot.commands.AutonomousCommand
+import frc.robot.commands.DriveToPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
@@ -33,6 +37,8 @@ object Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
+        AutonomousCommand()
+        AutonomousCommand(Baseline().start())
     }
 
     /**
@@ -56,6 +62,8 @@ object Robot : TimedRobot() {
      */
     override fun teleopPeriodic() {
         Scheduler.getInstance().run()
+        SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
+        SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
     }
 
     /**
