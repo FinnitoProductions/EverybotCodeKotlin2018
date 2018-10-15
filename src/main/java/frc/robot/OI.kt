@@ -4,8 +4,7 @@ import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
-import org.harker.robotics.harkerrobolib.wrappers.GamepadWrapper
-
+import harkerrobolib.wrappers.GamepadWrapper
 object OI {
     val DRIVER_PORT = 0
     val OPERATOR_PORT = 1

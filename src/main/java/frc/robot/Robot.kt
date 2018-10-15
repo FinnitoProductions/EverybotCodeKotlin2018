@@ -37,8 +37,7 @@ object Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
-        AutonomousCommand()
-        AutonomousCommand(Baseline().start())
+        AutonomousCommand(Baseline()).start()
     }
 
     /**
