@@ -110,6 +110,7 @@ object Drivetrain : Subsystem() {
         leftMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
         leftMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_LEFT, Global.TIMEOUT)
         leftMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_LEFT, Global.TIMEOUT)
+
         rightMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_RIGHT, Global.TIMEOUT)
         rightMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_RIGHT, Global.TIMEOUT)
         rightMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_RIGHT, Global.TIMEOUT)

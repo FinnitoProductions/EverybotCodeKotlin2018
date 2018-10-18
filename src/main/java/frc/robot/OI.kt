@@ -4,12 +4,14 @@ import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
-import harkerrobolib.wrappers.GamepadWrapper
+import harkerrobolib.wrappers.LogitechGamepad
+import harkerrobolib.wrappers.XboxGamepad
+
 object OI {
     val DRIVER_PORT = 0
     val OPERATOR_PORT = 1
-    val driverGamepad = GamepadWrapper(DRIVER_PORT)
-    val operatorGamepad = GamepadWrapper(OPERATOR_PORT)
+    val driverGamepad = XboxGamepad(DRIVER_PORT)
+    val operatorGamepad = LogitechGamepad(OPERATOR_PORT)
     val JOYSTICK_UP = 1
 
     val XBOX_DEADBAND = 0.1
