@@ -14,7 +14,12 @@ import harkerrobolib.util.Conversions
  */
 class DriveToPosition(val position: Double) : Command() {
 
+    init {
+        requires(Drivetrain)
+    }
+
     val convertedPosition = Conversions.convertPosition(Conversions.PositionUnit.FEET,position, Conversions.PositionUnit.ENCODER_UNITS)
+
     override fun initialize() {
         Drivetrain.leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative ,Drivetrain.PID_PRIMARY, Global.TIMEOUT)
         Drivetrain.rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Drivetrain.PID_PRIMARY, Global.TIMEOUT)

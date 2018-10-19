@@ -101,8 +101,7 @@ object Drivetrain : Subsystem() {
         val leftOutputBase = speed + turn * Math.abs(turn)
         leftMaster.set(ControlMode.PercentOutput, leftOutputBase / divisor)
         val rightOutputBase = speed - turn * Math.abs(turn)
-        rightMaster.set(ControlMode.PercentOutput,
-                rightOutputBase / divisor)
+        rightMaster.set(ControlMode.PercentOutput, rightOutputBase / divisor)
     }
 
     private fun setUpPositionPID() {
