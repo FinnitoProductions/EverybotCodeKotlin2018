@@ -1,12 +1,20 @@
 package frc.robot.commands
 
-import frc.robot.auto.AutoMode
+import edu.wpi.first.wpilibj.command.Command
+import harkerrobolib.auto.AutoMode
 
-class Baseline : AutoMode() {
+class Baseline(val startLoc : AutoMode.StartLocation) : AutoMode(startLoc) {
 
+    override fun getRightCommands(): Command {
+        return DriveToPosition(DISTANCE)
+    }
 
-    override fun addCommands() {
-        this.addSequential(DriveToPosition(DISTANCE))
+    override fun getCenterCommands(): Command {
+        return centerAutonNotDefined
+    }
+
+    override fun getLeftCommands(): Command {
+        return DriveToPosition(DISTANCE)
     }
 
     companion object {

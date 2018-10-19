@@ -3,13 +3,12 @@ package frc.robot
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
-import frc.robot.auto.AutoMode
 import frc.robot.commands.AutonomousCommand
 import frc.robot.commands.Baseline
-import frc.robot.commands.DriveToPosition
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
+import harkerrobolib.auto.AutoMode
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,7 +37,7 @@ object Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
-        AutonomousCommand(Baseline()).start()
+        AutonomousCommand(Baseline(AutoMode.StartLocation.LEFT)).start()
     }
 
     /**
