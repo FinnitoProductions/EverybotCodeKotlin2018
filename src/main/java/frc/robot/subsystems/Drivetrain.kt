@@ -104,6 +104,12 @@ object Drivetrain : Subsystem() {
         rightMaster.set(ControlMode.PercentOutput, rightOutputBase / divisor)
     }
 
+    fun tankDrivePercentOutput(leftOutput: Double, rightOutput: Double) {
+        val speed = (leftOutput + rightOutput)/2
+        val turn = (leftOutput - rightOutput)/2
+        arcadeDrivePercentOutput(speed, turn)
+    }
+    
     private fun setUpPositionPID() {
         leftMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
         leftMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
