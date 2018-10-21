@@ -14,7 +14,7 @@ class MoveArmManual : Command() {
     override fun isFinished() = false
 
     override fun execute() {
-        var joystickInput = MathUtil.mapOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND)
+        var joystickInput = MathUtil.mapOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
         if (Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE)
             joystickInput = 0.0
         if (Math.signum(joystickInput).toInt() == OI.JOYSTICK_UP)

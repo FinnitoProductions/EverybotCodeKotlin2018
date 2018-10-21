@@ -37,36 +37,36 @@ object Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
-        AutonomousCommand(Baseline(AutoMode.StartLocation.LEFT)).start()
+        AutonomousCommand(Baseline(AutoMode.StartLocation.LEFT)).start();
+    }
+        /**
+         * This function is called periodically during autonomous.
+         */
+        override fun autonomousPeriodic() {
+            Scheduler.getInstance().run()
+        }
+
+        /**
+         * This function is called once each time the robot enters teleoperated mode.
+         */
+        override fun teleopInit() {
+            Drivetrain.talonInit()
+            Intake.talonInit()
+            Arm.talonInit()
+        }
+
+        /**
+         * This function is called periodically during teleoperated mode.
+         */
+        override fun teleopPeriodic() {
+            Scheduler.getInstance().run()
+            SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
+            SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
+        }
+
+        /**
+         * This function is called periodically during test mode.
+         */
+        override fun testPeriodic() {}
     }
 
-    /**
-     * This function is called periodically during autonomous.
-     */
-    override fun autonomousPeriodic() {
-        Scheduler.getInstance().run()
-    }
-
-    /**
-     * This function is called once each time the robot enters teleoperated mode.
-     */
-    override fun teleopInit() {
-        Drivetrain.talonInit()
-        Intake.talonInit()
-        Arm.talonInit()
-    }
-
-    /**
-     * This function is called periodically during teleoperated mode.
-     */
-    override fun teleopPeriodic() {
-        Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
-        SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
-    }
-
-    /**
-     * This function is called periodically during test mode.
-     */
-    override fun testPeriodic() {}
-}
