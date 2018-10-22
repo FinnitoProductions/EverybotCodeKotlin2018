@@ -5,7 +5,7 @@ import frc.robot.*
 import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.NeutralMode
 import edu.wpi.first.wpilibj.command.Subsystem
-import frc.robot.commands.DriveWithVelocityManual
+import frc.robot.commands.ArcadeDriveVelocity
 
 
 object Drivetrain : Subsystem() {
@@ -122,6 +122,6 @@ object Drivetrain : Subsystem() {
         rightMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
     }
     override fun initDefaultCommand() {
-        defaultCommand = DriveWithVelocityManual()
+        defaultCommand = ArcadeDriveVelocity()
     }
 }

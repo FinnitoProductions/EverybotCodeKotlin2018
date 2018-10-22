@@ -2,6 +2,7 @@ package frc.robot
 
 import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
+import frc.robot.commands.ToggleArcadeTank
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
 import harkerrobolib.wrappers.LogitechGamepad
@@ -39,5 +40,7 @@ object OI {
         operatorGamepad.buttonX.whenPressed(outtakeCommand)
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 
+        //toggle arcade and tank
+        driverGamepad.buttonBumperLeft.whenPressed(ToggleArcadeTank())
     }
 }

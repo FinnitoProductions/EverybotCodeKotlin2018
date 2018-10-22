@@ -5,7 +5,6 @@ import com.ctre.phoenix.motorcontrol.NeutralMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
-import frc.robot.commands.DriveWithVelocityManual
 import frc.robot.commands.MoveArmManual
 import frc.robot.util.MathUtil
 

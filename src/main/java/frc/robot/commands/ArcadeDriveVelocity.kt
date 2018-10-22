@@ -5,7 +5,7 @@ import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
 import frc.robot.util.MathUtil
 
-class DriveWithVelocityManual : Command() {
+class ArcadeDriveVelocity : Command() {
     init {
         requires(Drivetrain)
     }

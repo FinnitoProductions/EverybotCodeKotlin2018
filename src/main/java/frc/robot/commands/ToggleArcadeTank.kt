@@ -9,11 +9,10 @@ class ToggleArcadeTank() : InstantCommand() {
         requires(Drivetrain)
     }
     override fun initialize() {
-        if (Drivetrain.defaultCommand is TankDrive) {
-            Drivetrain.defaultCommand = DriveWithVelocityManual()
-        } else if (Drivetrain.defaultCommand is DriveWithVelocityManual) {
-            Drivetrain.defaultCommand = TankDrive()
+        if (Drivetrain.defaultCommand is TankDriveVelocity) {
+            Drivetrain.defaultCommand = ArcadeDriveVelocity()
+        } else if (Drivetrain.defaultCommand is ArcadeDriveVelocity) {
+            Drivetrain.defaultCommand = TankDriveVelocity()
         }
     }
-
 }

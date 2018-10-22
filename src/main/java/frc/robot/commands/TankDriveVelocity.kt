@@ -5,7 +5,7 @@ import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
 import frc.robot.util.MathUtil
 
-class TankDrive : Command() {
+class TankDriveVelocity : Command() {
     init {
         requires(Drivetrain)
     }
