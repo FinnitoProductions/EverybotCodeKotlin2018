@@ -109,7 +109,7 @@ object Drivetrain : Subsystem() {
         val turn = (leftOutput - rightOutput)/2
         arcadeDrivePercentOutput(speed, turn)
     }
-    
+
     private fun setUpPositionPID() {
         leftMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
         leftMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
