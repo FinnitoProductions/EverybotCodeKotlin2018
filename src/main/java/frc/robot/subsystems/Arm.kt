@@ -24,6 +24,8 @@ object Arm : Subsystem() {
     const val TALON_CURRENT_SPIKE = 0.0
     const val MAX_EXTREME_SPEED = 1.0
 
+    val DEFAULT_ARM_COMMAND = MoveArmManual()
+
     enum class ArmDirection {
         UP, DOWN
     }

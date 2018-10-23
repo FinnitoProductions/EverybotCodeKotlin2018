@@ -41,6 +41,6 @@ object OI {
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 
         //toggle arcade and tank
-        driverGamepad.buttonBumperLeft.whenPressed(ToggleArcadeTank())
+        driverGamepad.buttonStart.whenPressed(ToggleArcadeTank())
     }
 }

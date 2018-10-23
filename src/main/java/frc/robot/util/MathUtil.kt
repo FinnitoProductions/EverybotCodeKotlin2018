@@ -20,7 +20,7 @@ object MathUtil {
      */
     fun mapOutput(givenOutput: Double, deadband: Double): Double {
         if (Math.abs(givenOutput) <= deadband) return 0.0
-        if (givenOutput > 0) return (givenOutput - deadband) / (1 - deadband)
-        else return (givenOutput + deadband) / (1 - deadband)
+        return if (givenOutput > 0) (givenOutput - deadband) / (1 - deadband)
+        else (givenOutput + deadband) / (1 - deadband)
     }
 }
