@@ -60,8 +60,8 @@ object Robot : TimedRobot() {
          */
         override fun teleopPeriodic() {
             Scheduler.getInstance().run()
-            SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
-            SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Drivetrain.PID_PRIMARY).toDouble())
+            SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
+            SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
         }
 
         /**

@@ -15,7 +15,8 @@ object CAN_IDs {
 
 object Global {
     const val TIMEOUT = 10
-
+    
+    //PID constants
     const val PID_PRIMARY = 0;
     const val PID_AUXILIARY = 1;
 }

@@ -27,7 +27,6 @@ object Drivetrain : Subsystem() {
     const val TALON_PEAK_TIME = 500
     const val TALON_CURRENT_ENABLE = true
 
-    //PID constants
     const val KP_POSITION_LEFT = 0.0
     const val KI_POSITION_LEFT = 0.0
     const val KD_POSITION_LEFT = 0.0
