@@ -8,17 +8,17 @@ import harkerrobolib.commands.IndefiniteCommand
 class ToggleArcadeTank : InstantCommand() {
     private val ad = ArcadeDriveVelocity()
     private val td = TankDriveVelocity()
-    private val ap = Arm.DEFAULT_ARM_COMMAND
+    private val armDefault = Arm.defaultCommand
     private val id = IndefiniteCommand()
 
     init {
         requires(Drivetrain)
     }
-    
+
     override fun initialize() {
         if (Drivetrain.defaultCommand is TankDriveVelocity) {
             Drivetrain.defaultCommand = ad
-            Arm.defaultCommand = ap
+            Arm.defaultCommand = armDefault
         } else if (Drivetrain.defaultCommand is ArcadeDriveVelocity) {
             Drivetrain.defaultCommand = td
             Arm.defaultCommand = id
