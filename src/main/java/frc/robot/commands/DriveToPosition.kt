@@ -40,7 +40,7 @@ class DriveToPosition(val position: Double) : Command() {
     }
 
     override fun execute() {
-        Drivetrain.leftMaster.set(Position, convertedPosition)
-        Drivetrain.rightMaster.set(Position, convertedPosition)
+        Drivetrain.leftMaster[Position] = convertedPosition
+        Drivetrain.rightMaster[Position] = convertedPosition
     }
 }

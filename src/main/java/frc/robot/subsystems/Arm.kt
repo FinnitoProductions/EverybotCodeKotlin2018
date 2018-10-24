@@ -67,9 +67,9 @@ object Arm : Subsystem() {
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
         val modifiedOutput = MathUtil.constrainOutput(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
         if (direction == ArmDirection.UP) {
-            armTalon.set(ControlMode.PercentOutput, modifiedOutput * TALON_MOTION_DIRECTION)
+            armTalon[ControlMode.PercentOutput] = modifiedOutput * TALON_MOTION_DIRECTION
         } else {
-            armTalon.set(ControlMode.PercentOutput, modifiedOutput * -TALON_MOTION_DIRECTION)
+            armTalon[ControlMode.PercentOutput] = modifiedOutput * -TALON_MOTION_DIRECTION
         }
     }
 

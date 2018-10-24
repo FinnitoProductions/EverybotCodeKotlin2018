@@ -96,14 +96,14 @@ object Intake : Subsystem() {
         val leftModifiedOutput = MathUtil.constrainOutput(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
         val rightModifiedOutput = MathUtil.constrainOutput(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
-            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * TALON_INTAKE_DIRECTION)
+            leftTalon[ControlMode.PercentOutput] = leftModifiedOutput * TALON_INTAKE_DIRECTION
         } else {
-            leftTalon.set(ControlMode.PercentOutput, leftModifiedOutput * -TALON_INTAKE_DIRECTION)
+            leftTalon[ControlMode.PercentOutput] = leftModifiedOutput * -TALON_INTAKE_DIRECTION
         }
         if (rightDirection == IntakeDirection.IN) {
-            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * -TALON_INTAKE_DIRECTION)
+            rightTalon[ControlMode.PercentOutput] = rightModifiedOutput * -TALON_INTAKE_DIRECTION
         } else {
-            rightTalon.set(ControlMode.PercentOutput, rightModifiedOutput * TALON_INTAKE_DIRECTION)
+            rightTalon[ControlMode.PercentOutput] = rightModifiedOutput * TALON_INTAKE_DIRECTION
         }
 
     }

@@ -99,9 +99,9 @@ object Drivetrain : Subsystem() {
     fun arcadeDrivePercentOutput(speed: Double, turn: Double) {
         val divisor = Math.max(1.0, Math.max(Math.abs(speed + Math.pow(turn, 2.0)), Math.abs(speed - Math.pow(turn, 2.0))))
         val leftOutputBase = speed + turn * Math.abs(turn)
-        leftMaster.set(ControlMode.PercentOutput, leftOutputBase / divisor)
+        leftMaster[ControlMode.PercentOutput] = leftOutputBase / divisor
         val rightOutputBase = speed - turn * Math.abs(turn)
-        rightMaster.set(ControlMode.PercentOutput, rightOutputBase / divisor)
+        rightMaster[ControlMode.PercentOutput] = rightOutputBase / divisor
     }
 
     fun tankDrivePercentOutput(leftOutput: Double, rightOutput: Double) {
