@@ -4,8 +4,9 @@ import edu.wpi.first.wpilibj.command.Command
 import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
 import frc.robot.util.MathUtil
+import harkerrobolib.commands.IndefiniteCommand
 
-class ArcadeDriveVelocity : Command() {
+class ArcadeDriveVelocity : IndefiniteCommand() {
     init {
         requires(Drivetrain)
     }
@@ -19,10 +20,4 @@ class ArcadeDriveVelocity : Command() {
         val turn = MathUtil.mapOutput(OI.driverGamepad.leftX, OI.XBOX_DEADBAND)
         Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
     }
-
-    /**
-     * Determines that command never ends.
-     */
-    override fun isFinished(): Boolean = false
-
 }

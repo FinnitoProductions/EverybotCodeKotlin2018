@@ -4,14 +4,13 @@ import edu.wpi.first.wpilibj.command.Command
 import frc.robot.OI
 import frc.robot.subsystems.Arm
 import frc.robot.util.MathUtil
+import harkerrobolib.commands.IndefiniteCommand
 
-class MoveArmManual : Command() {
+class MoveArmManual : IndefiniteCommand() {
 
     init {
         requires(Arm)
     }
-
-    override fun isFinished() = false
 
     override fun execute() {
         var joystickInput = MathUtil.mapOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)

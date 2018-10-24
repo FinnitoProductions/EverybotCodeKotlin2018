@@ -4,13 +4,12 @@ import edu.wpi.first.wpilibj.command.Command
 import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
 import frc.robot.util.MathUtil
+import harkerrobolib.commands.IndefiniteCommand
 
-class TankDriveVelocity : Command() {
+class TankDriveVelocity : IndefiniteCommand() {
     init {
         requires(Drivetrain)
     }
-
-    override fun isFinished(): Boolean = false
 
     override fun execute() {
         val leftOutput = MathUtil.mapOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND)

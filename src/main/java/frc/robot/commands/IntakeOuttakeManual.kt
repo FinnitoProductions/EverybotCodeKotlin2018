@@ -5,8 +5,9 @@ import edu.wpi.first.wpilibj.command.Command
 import frc.robot.OI
 import frc.robot.subsystems.Intake
 import frc.robot.util.MathUtil
+import harkerrobolib.commands.IndefiniteCommand
 
-class IntakeOuttakeManual : Command() {
+class IntakeOuttakeManual : IndefiniteCommand() {
 
     init {
         requires(Intake)
@@ -29,10 +30,4 @@ class IntakeOuttakeManual : Command() {
 
 
     }
-
-    /**
-     * Determines that command never ends.
-     */
-    override fun isFinished() = false
-
 }
