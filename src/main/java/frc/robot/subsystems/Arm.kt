@@ -12,7 +12,7 @@ object Arm : Subsystem() {
 
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)
 
-    const val ARM_INVERTED = true
+    const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_CURRENT = 0
     const val TALON_CONTINUOUS_CURRENT = 0
@@ -24,7 +24,7 @@ object Arm : Subsystem() {
     const val TALON_CURRENT_SPIKE = 0.0
     const val MAX_EXTREME_SPEED = 1.0
 
-    val DEFAULT_ARM_COMMAND = MoveArmManual()
+    val DEFAULT_COMMAND = MoveArmManual()
 
     enum class ArmDirection {
         UP, DOWN
@@ -32,7 +32,7 @@ object Arm : Subsystem() {
 
 
     override fun initDefaultCommand() {
-        defaultCommand = MoveArmManual()
+        defaultCommand = DEFAULT_COMMAND
     }
 
 
@@ -43,7 +43,7 @@ object Arm : Subsystem() {
     }
 
     private fun invertTalons() {
-        armTalon.inverted = ARM_INVERTED
+        armTalon.inverted = INVERTED
     }
 
     private fun setNeutralModes() {
