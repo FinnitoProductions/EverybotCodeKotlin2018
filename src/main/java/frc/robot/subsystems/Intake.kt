@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.CAN_IDs
 import frc.robot.Global
 import frc.robot.commands.IntakeOuttakeManual
-import frc.robot.util.MathUtil
+import harkerrobolib.util.MathUtil
 
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
@@ -93,8 +93,8 @@ object Intake : Subsystem() {
      * @param rightDirection enum representing right wheel's direction
      */
     fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
-        val leftModifiedOutput = MathUtil.constrainOutput(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
-        val rightModifiedOutput = MathUtil.constrainOutput(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
+        val leftModifiedOutput = MathUtil.constrain(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
+        val rightModifiedOutput = MathUtil.constrain(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
             leftTalon[ControlMode.PercentOutput] = leftModifiedOutput * TALON_INTAKE_DIRECTION
         } else {

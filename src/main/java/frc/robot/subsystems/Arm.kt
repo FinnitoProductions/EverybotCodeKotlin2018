@@ -6,7 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.MoveArmManual
-import frc.robot.util.MathUtil
+import harkerrobolib.util.MathUtil
 
 object Arm : Subsystem() {
 
@@ -65,7 +65,7 @@ object Arm : Subsystem() {
      * @param direction direction arm will move
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
-        val modifiedOutput = MathUtil.constrainOutput(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
+        val modifiedOutput = MathUtil.constrain(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
         if (direction == ArmDirection.UP) {
             armTalon[ControlMode.PercentOutput] = modifiedOutput * TALON_MOTION_DIRECTION
         } else {
