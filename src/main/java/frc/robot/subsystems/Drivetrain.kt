@@ -49,6 +49,8 @@ object Drivetrain : Subsystem() {
 
     const val INITIAL_POSITION = 0
 
+    val DEFAULT_COMMAND = ArcadeDriveVelocity()
+
 
     init {
         leftMaster = TalonSRX(CAN_IDs.LEFT_MASTER_ID)
@@ -122,6 +124,6 @@ object Drivetrain : Subsystem() {
         rightMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
     }
     override fun initDefaultCommand() {
-        defaultCommand = ArcadeDriveVelocity()
+        defaultCommand = DEFAULT_COMMAND
     }
 }

@@ -28,6 +28,8 @@ object Intake : Subsystem() {
     const val DEFAULT_INTAKE_SPEED = 1.0
     const val DEFAULT_OUTTAKE_SPEED = -1.0
 
+    val DEFAULT_COMMAND = IntakeOuttakeManual()
+
     enum class IntakeDirection {
         IN, OUT
     }
@@ -109,7 +111,7 @@ object Intake : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-        defaultCommand = IntakeOuttakeManual()
+        defaultCommand = DEFAULT_COMMAND
     }
 
 
