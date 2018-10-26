@@ -16,9 +16,9 @@ object Drivetrain : Subsystem() {
 
     //Talon constants
     const val LEFT_MASTER_INVERTED = true
-    const val RIGHT_MASTER_INVERTED = true
+    const val RIGHT_MASTER_INVERTED = false
     const val LEFT_FOLLOWER_INVERTED = true
-    const val RIGHT_FOLLOWER_INVERTED = true
+    const val RIGHT_FOLLOWER_INVERTED = false
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_RIGHT_CURRENT = 50
     const val TALON_PEAK_LEFT_CURRENT = 50

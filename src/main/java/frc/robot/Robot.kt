@@ -17,7 +17,7 @@ import harkerrobolib.auto.AutoMode
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-object Robot : TimedRobot() {
+class Robot : TimedRobot() {
 
     /**
      * This function is run when the robot is first started up and should be

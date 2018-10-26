@@ -14,13 +14,13 @@ object Arm : Subsystem() {
 
     const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
-    const val TALON_PEAK_CURRENT = 0
-    const val TALON_CONTINUOUS_CURRENT = 0
-    const val TALON_PEAK_TIME = 0
+    const val TALON_PEAK_CURRENT = 20
+    const val TALON_CONTINUOUS_CURRENT = 15
+    const val TALON_PEAK_TIME = 200
     const val TALON_CURRENT_ENABLE = true
     const val MAX_MOTION_SPEED = 1.0
     const val MIN_MOTION_SPEED = 0.0
-    const val TALON_MOTION_DIRECTION = 1
+    const val TALON_MOTION_DIRECTION = 10
     const val TALON_CURRENT_SPIKE = 0.0
     const val MAX_EXTREME_SPEED = 1.0
 
@@ -39,7 +39,7 @@ object Arm : Subsystem() {
     fun talonInit() {
         invertTalons()
         setNeutralModes()
-        setCurrentLimits()
+        //setCurrentLimits()
     }
 
     private fun invertTalons() {
@@ -65,12 +65,16 @@ object Arm : Subsystem() {
      * @param direction direction arm will move
      */
     fun armMotionPercentOutput(output: Double, direction: ArmDirection) {
-        val modifiedOutput = MathUtil.constrain(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
+        val modifiedOutput = output//MathUtil.constrain(output, MAX_MOTION_SPEED, MIN_MOTION_SPEED)
         if (direction == ArmDirection.UP) {
-            armTalon[ControlMode.PercentOutput] = modifiedOutput * TALON_MOTION_DIRECTION
+            armMotionPercentOutput(modifiedOutput * TALON_MOTION_DIRECTION)
         } else {
-            armTalon[ControlMode.PercentOutput] = modifiedOutput * -TALON_MOTION_DIRECTION
+            armMotionPercentOutput(modifiedOutput * -TALON_MOTION_DIRECTION)
         }
+    }
+
+    fun armMotionPercentOutput (output: Double) {
+        armTalon[ControlMode.PercentOutput] = output
     }
 
     fun getTalonCurrent() = armTalon.outputCurrent

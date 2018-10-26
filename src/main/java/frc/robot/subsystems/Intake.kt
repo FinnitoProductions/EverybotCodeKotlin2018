@@ -14,7 +14,7 @@ object Intake : Subsystem() {
     val rightTalon: TalonSRX
 
     const val LEFT_TALON_INVERTED = true
-    const val RIGHT_TALON_INVERTED = true
+    const val RIGHT_TALON_INVERTED = false
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_RIGHT_CURRENT = 0
     const val TALON_PEAK_LEFT_CURRENT = 0
@@ -95,8 +95,8 @@ object Intake : Subsystem() {
      * @param rightDirection enum representing right wheel's direction
      */
     fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double, leftDirection: IntakeDirection, rightDirection: IntakeDirection) {
-        val leftModifiedOutput = MathUtil.constrain(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
-        val rightModifiedOutput = MathUtil.constrain(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
+        val leftModifiedOutput = leftOutput //MathUtil.constrain(leftOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
+        val rightModifiedOutput = rightOutput //MathUtil.constrain(rightOutput, MAX_OUTTAKE_SPEED, MIN_OUTTAKE_SPEED)
         if (leftDirection == IntakeDirection.IN) {
             leftTalon[ControlMode.PercentOutput] = leftModifiedOutput * TALON_INTAKE_DIRECTION
         } else {

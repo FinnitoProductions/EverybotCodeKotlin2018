@@ -36,6 +36,7 @@ object OI {
         val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)
         operatorGamepad.buttonB.whenPressed(intakeCommand)
         operatorGamepad.buttonB.cancelWhenReleased(intakeCommand)
+        
         val outtakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_OUTTAKE_SPEED, Intake.IntakeDirection.OUT)
         operatorGamepad.buttonX.whenPressed(outtakeCommand)
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
