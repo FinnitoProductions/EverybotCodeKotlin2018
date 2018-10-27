@@ -19,5 +19,6 @@ object Global {
     //PID constants
     const val PID_PRIMARY = 0;
     const val PID_AUXILIARY = 1;
+    const val hasTwoControllers = false
 }
 
