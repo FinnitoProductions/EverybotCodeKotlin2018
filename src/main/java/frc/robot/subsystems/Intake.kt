@@ -13,8 +13,8 @@ object Intake : Subsystem() {
     val leftTalon: TalonSRX
     val rightTalon: TalonSRX
 
-    const val LEFT_TALON_INVERTED = true
-    const val RIGHT_TALON_INVERTED = false
+    const val LEFT_TALON_INVERTED = false
+    const val RIGHT_TALON_INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
     const val TALON_PEAK_RIGHT_CURRENT = 0
     const val TALON_PEAK_LEFT_CURRENT = 0
@@ -26,7 +26,7 @@ object Intake : Subsystem() {
     const val MIN_OUTTAKE_SPEED = 0.0
     const val TALON_INTAKE_DIRECTION = 1
     const val DEFAULT_INTAKE_SPEED = 1.0
-    const val DEFAULT_OUTTAKE_SPEED = -1.0
+    const val DEFAULT_OUTTAKE_SPEED = 1.0
 
     val DEFAULT_COMMAND = IntakeOuttakeManual()
 
@@ -84,6 +84,11 @@ object Intake : Subsystem() {
             intakeOuttakeCube(output, output, IntakeDirection.OUT, IntakeDirection.OUT)
         }
 
+    }
+
+    fun intakeOuttakeCube(leftOutput: Double, rightOutput: Double) {
+        leftTalon.set(ControlMode.PercentOutput, leftOutput)
+        rightTalon.set(ControlMode.PercentOutput, rightOutput)
     }
 
     /**

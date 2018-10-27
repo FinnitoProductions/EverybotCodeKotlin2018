@@ -5,6 +5,8 @@ import frc.robot.commands.MoveArmPosition
 import frc.robot.commands.ToggleArcadeTank
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
+import harkerrobolib.wrappers.JoystickButtonWrapper
+import harkerrobolib.wrappers.LogitechAnalogGamepad
 import harkerrobolib.wrappers.LogitechGamepad
 import harkerrobolib.wrappers.XboxGamepad
 
@@ -12,7 +14,7 @@ object OI {
     val DRIVER_PORT = 0
     val OPERATOR_PORT = 1
     val driverGamepad = XboxGamepad(DRIVER_PORT)
-    val operatorGamepad = LogitechGamepad(OPERATOR_PORT)
+    val operatorGamepad = LogitechAnalogGamepad(OPERATOR_PORT)
     val JOYSTICK_UP = 1
 
     val XBOX_DEADBAND = 0.1
@@ -23,14 +25,15 @@ object OI {
     }
 
     fun initBindings() {
-
+        operatorGamepad.buttonA = JoystickButtonWrapper(operatorGamepad, 1)
+        operatorGamepad.buttonX = JoystickButtonWrapper(operatorGamepad, 3)
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
+        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))
 
         //operator arm buttons
-        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_EXTREME_SPEED, Arm.ArmDirection.DOWN))
-        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_EXTREME_SPEED, Arm.ArmDirection.UP))
+        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
+        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))
 
         //operator intake and outtake buttons
         val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)

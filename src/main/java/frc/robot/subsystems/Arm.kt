@@ -1,8 +1,10 @@
 package frc.robot.subsystems
 
 import com.ctre.phoenix.motorcontrol.ControlMode
+import com.ctre.phoenix.motorcontrol.DemandType
 import com.ctre.phoenix.motorcontrol.NeutralMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
+import edu.wpi.first.wpilibj.command.Command
 import frc.robot.*
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.MoveArmManual
@@ -14,15 +16,16 @@ object Arm : Subsystem() {
 
     const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
-    const val TALON_PEAK_CURRENT = 20
-    const val TALON_CONTINUOUS_CURRENT = 15
-    const val TALON_PEAK_TIME = 200
+    const val TALON_PEAK_CURRENT = 10
+    const val TALON_CONTINUOUS_CURRENT = 5
+    const val TALON_PEAK_TIME = 1000
     const val TALON_CURRENT_ENABLE = true
-    const val MAX_MOTION_SPEED = 1.0
-    const val MIN_MOTION_SPEED = 0.0
+    const val MAX_MANUAL_SPEED = 0.3
     const val TALON_MOTION_DIRECTION = 10
-    const val TALON_CURRENT_SPIKE = 0.0
-    const val MAX_EXTREME_SPEED = 1.0
+    const val TALON_CURRENT_SPIKE = 3
+    const val MAX_POSITION_UP_SPEED = 0.6
+    const val MAX_POSITION_DOWN_SPEED = 0.07
+    const val FEED_FORWARD_GRAV = 0.05
 
     val DEFAULT_COMMAND = MoveArmManual()
 
@@ -39,7 +42,7 @@ object Arm : Subsystem() {
     fun talonInit() {
         invertTalons()
         setNeutralModes()
-        //setCurrentLimits()
+        setCurrentLimits()
     }
 
     private fun invertTalons() {
@@ -74,7 +77,7 @@ object Arm : Subsystem() {
     }
 
     fun armMotionPercentOutput (output: Double) {
-        armTalon[ControlMode.PercentOutput] = output
+        armTalon.set(ControlMode.PercentOutput, output, DemandType.ArbitraryFeedForward, Arm.FEED_FORWARD_GRAV)
     }
 
     fun getTalonCurrent() = armTalon.outputCurrent

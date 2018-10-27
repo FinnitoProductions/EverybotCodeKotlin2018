@@ -16,18 +16,21 @@ class MoveArmManual : IndefiniteCommand() {
 
     override fun execute() {
 
-        var driverJoystickInput = OI.driverGamepad.rightY //MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
-        // if (Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE)
-        //     joystickInput = 0.0
-        if (Math.signum(driverJoystickInput).toInt() == OI.JOYSTICK_UP)
+        var driverJoystickInput = MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
+         if (Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE)
+             driverJoystickInput = 0.0
+        /*if (Math.signum(driverJoystickInput).toInt() == OI.JOYSTICK_UP)
             Arm.armMotionPercentOutput(driverJoystickInput, Arm.ArmDirection.UP)
         else
             Arm.armMotionPercentOutput(driverJoystickInput, Arm.ArmDirection.DOWN)
-        SmartDashboard.putNumber("Right Y", driverJoystickInput)
+        SmartDashboard.putNumber("Right Y", driverJoystickInput)*/
+        Arm.armMotionPercentOutput(driverJoystickInput)
 
         if(Global.HAS_TWO_CONTROLLERS && Math.abs(driverJoystickInput) <= OI.XBOX_DEADBAND) {
-            val leftOperatorTrigger = OI.operatorGamepad.leftTrigger
-            val rightOperatorTrigger = OI.operatorGamepad.rightTrigger
+            val leftOperatorTrigger = MathUtil.map(OI.operatorGamepad.leftTrigger, 0.0, 1.0,
+                    0.0, Arm.MAX_MANUAL_SPEED)
+            val rightOperatorTrigger = MathUtil.map(OI.operatorGamepad.rightTrigger, 0.0, 1.0,
+                    0.0, Arm.MAX_MANUAL_SPEED)
             if(leftOperatorTrigger > rightOperatorTrigger) {
                 Arm.armMotionPercentOutput(leftOperatorTrigger, Arm.ArmDirection.UP)
             }

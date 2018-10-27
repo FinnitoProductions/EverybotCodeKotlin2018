@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.NeutralMode
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.ArcadeDriveVelocity
+import frc.robot.commands.TankDriveVelocity
 
 
 object Drivetrain : Subsystem() {
@@ -104,9 +105,12 @@ object Drivetrain : Subsystem() {
     }
 
     fun tankDrivePercentOutput(leftOutput: Double, rightOutput: Double) {
-        val speed = (leftOutput + rightOutput)/2
-        val turn = (leftOutput - rightOutput)/2
-        arcadeDrivePercentOutput(speed, turn)
+        // val speed = (leftOutput + rightOutput)/2
+        // val turn = (leftOutput - rightOutput)/2
+        // arcadeDrivePercentOutput(speed, turn)
+        leftMaster.set(ControlMode.PercentOutput, leftOutput)
+        rightMaster.set(ControlMode.PercentOutput, rightOutput)
+
     }
 
     private fun setUpPositionPID() {

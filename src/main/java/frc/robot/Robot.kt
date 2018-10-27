@@ -62,6 +62,8 @@ class Robot : TimedRobot() {
             Scheduler.getInstance().run()
             SmartDashboard.putNumber("Drivetrain leftMaster's encoder position:", Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
             SmartDashboard.putNumber("Drivetrain rightMaster's encoder position:", Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
+        
+            SmartDashboard.putNumber ("Arm Current", Arm.getTalonCurrent())
         }
 
         /**

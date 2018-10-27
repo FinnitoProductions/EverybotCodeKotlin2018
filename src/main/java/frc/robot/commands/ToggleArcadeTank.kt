@@ -1,5 +1,6 @@
 package frc.robot.commands
 
+import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.command.InstantCommand
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
@@ -9,17 +10,25 @@ class ToggleArcadeTank : InstantCommand() {
     private val ad = ArcadeDriveVelocity()
     private val td = TankDriveVelocity()
     private val armDefault = Arm.defaultCommand
-    private val id = IndefiniteCommand()
+    private val id = object : Command() {
+        override fun isFinished() : Boolean {
+            return false
+        }
 
-    init {
-        requires(Drivetrain)
+        init {
+            requires (Arm)
+        }
     }
 
     override fun initialize() {
+        println (Drivetrain.defaultCommand.javaClass)
+        println (Arm.defaultCommand.javaClass)
         if (Drivetrain.defaultCommand is TankDriveVelocity) {
+            println ("Changing to Arcade")
             Drivetrain.defaultCommand = ad
             Arm.defaultCommand = armDefault
-        } else if (Drivetrain.defaultCommand is ArcadeDriveVelocity) {
+        } else  {
+            println ("Changing to Tank")
             Drivetrain.defaultCommand = td
             Arm.defaultCommand = id
         }

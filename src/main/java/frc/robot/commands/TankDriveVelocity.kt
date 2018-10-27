@@ -15,7 +15,7 @@ class TankDriveVelocity : IndefiniteCommand() {
         val leftOutput = MathUtil.mapJoystickOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND)
         val rightOutput = MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
         Drivetrain.tankDrivePercentOutput(leftOutput, rightOutput)
-
+        println("TANK DRIVING")
     }
 
 }
