@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode.Position
 import com.ctre.phoenix.motorcontrol.FeedbackDevice
 import com.sun.javaws.Globals
 import edu.wpi.first.wpilibj.command.Command
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.Global
 import frc.robot.subsystems.Drivetrain
 import harkerrobolib.util.Conversions
@@ -41,7 +42,9 @@ class DriveToPosition(val position: Double) : Command() {
     }
 
     override fun execute() {
-        Drivetrain.leftMaster[Position] = convertedPosition
-        Drivetrain.rightMaster[Position] = convertedPosition
+//        Drivetrain.leftMaster[Position] = convertedPosition
+//       Drivetrain.rightMaster[Position] = convertedPosition
+        SmartDashboard.putNumber("left pos", Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
+        SmartDashboard.putNumber("right pos", Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
     }
 }
