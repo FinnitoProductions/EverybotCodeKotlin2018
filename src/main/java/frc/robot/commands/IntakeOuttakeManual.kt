@@ -1,6 +1,5 @@
 package frc.robot.commands
 
-
 import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.Global
@@ -28,15 +27,13 @@ class IntakeOuttakeManual : IndefiniteCommand() {
         }
 
         if (Math.abs(leftOperatorJoystickInput) <= OI.LOGITECH_DEADBAND && Math.abs(rightOperatorJoystickInput) <= OI.LOGITECH_DEADBAND) {
-            val driverJoystickIntakeInput = OI.driverGamepad.leftTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.leftTrigger, OI.XBOX_DEADBAND)
-            val driverJoystickOuttakeInput = OI.driverGamepad.rightTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND)
-            if (driverJoystickIntakeInput > driverJoystickOuttakeInput) {
-                Intake.intakeOuttakeCube(driverJoystickIntakeInput, Intake.IntakeDirection.IN)
+            val driverIntakeInput = OI.driverGamepad.leftTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.leftTrigger, OI.XBOX_DEADBAND)
+            val driverOuttakeInput = OI.driverGamepad.rightTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND)
+            if (driverIntakeInput > driverOuttakeInput) {
+                Intake.intakeOuttakeCube(driverIntakeInput, Intake.IntakeDirection.IN)
             } else {
-                Intake.intakeOuttakeCube(driverJoystickOuttakeInput, Intake.IntakeDirection.OUT)
+                Intake.intakeOuttakeCube(driverOuttakeInput, Intake.IntakeDirection.OUT)
             }
         }
-
-
     }
 }
