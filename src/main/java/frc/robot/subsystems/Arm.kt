@@ -14,9 +14,9 @@ object Arm : Subsystem() {
 
     const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
-    const val TALON_PEAK_CURRENT = 20
-    const val TALON_CONTINUOUS_CURRENT = 15
-    const val TALON_PEAK_TIME = 200
+    const val TALON_PEAK_CURRENT = 80
+    const val TALON_CONTINUOUS_CURRENT = 30
+    const val TALON_PEAK_TIME = 1000
     const val TALON_CURRENT_ENABLE = true
     const val MAX_MOTION_SPEED = 1.0
     const val MIN_MOTION_SPEED = 0.0
@@ -39,7 +39,7 @@ object Arm : Subsystem() {
     fun talonInit() {
         invertTalons()
         setNeutralModes()
-        //setCurrentLimits()
+        setCurrentLimits()
     }
 
     private fun invertTalons() {
