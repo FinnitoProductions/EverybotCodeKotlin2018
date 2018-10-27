@@ -37,9 +37,6 @@ class IntakeOuttakeManual : IndefiniteCommand() {
             }
         }
 
-        SmartDashboard.putNumber("Left Trigger", OI.driverGamepad.leftTrigger);
-        SmartDashboard.putNumber("Right Trigger", OI.driverGamepad.rightTrigger);
-
 
     }
 }
