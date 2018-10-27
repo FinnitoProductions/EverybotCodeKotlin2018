@@ -16,6 +16,7 @@ object Arm : Subsystem() {
 
     const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
+
     const val TALON_PEAK_CURRENT = 10
     const val TALON_CONTINUOUS_CURRENT = 5
     const val TALON_PEAK_TIME = 1000
