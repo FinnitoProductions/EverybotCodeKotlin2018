@@ -4,8 +4,15 @@ import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.command.InstantCommand
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
-import harkerrobolib.commands.IndefiniteCommand
 
+/**
+ * Switches Drivetrain's default command between arcade and tank drive.
+ * If arcade drive is in use, the arm can be moved manually.
+ *
+ * @author  Angela Jia
+ * @author  Finn Frankis
+ * @version 10/21/18
+ */
 class ToggleArcadeTank : InstantCommand() {
     private val ad = ArcadeDriveVelocity()
     private val td = TankDriveVelocity()

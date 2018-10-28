@@ -13,7 +13,8 @@ import harkerrobolib.util.MathUtil
 /**
  * Represents the arm on the robot with a single Talon for control and position movement based on current spikes.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 10/4/18
  */
 object Arm : Subsystem() {

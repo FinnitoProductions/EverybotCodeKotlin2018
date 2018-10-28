@@ -13,7 +13,8 @@ import harkerrobolib.wrappers.XboxGamepad
 /**
  * Handles all of the teleoperated input given to the robot, most notably through the joysticks.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 9/27/18
  */
 object OI {

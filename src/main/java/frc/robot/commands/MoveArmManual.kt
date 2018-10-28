@@ -1,13 +1,18 @@
 package frc.robot.commands
 
-import edu.wpi.first.wpilibj.command.Command
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Arm
 import harkerrobolib.commands.IndefiniteCommand
 import harkerrobolib.util.MathUtil
 
+/**
+ * Moves the arm indefinitely.
+ *
+ * @author  Angela Jia
+ * @author  Finn Frankis
+ * @version 10/6/18
+ */
 class MoveArmManual : IndefiniteCommand() {
 
     init {

@@ -12,7 +12,8 @@ import harkerrobolib.util.MathUtil
 /**
  * Represents the intake on the robot with a two Talons for left and right control.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 10/1/18
  */
 object Intake : Subsystem() {

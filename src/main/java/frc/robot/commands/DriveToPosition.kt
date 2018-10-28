@@ -1,8 +1,6 @@
 package frc.robot.commands
 
-import com.ctre.phoenix.motorcontrol.ControlMode.Position
 import com.ctre.phoenix.motorcontrol.FeedbackDevice
-import com.sun.javaws.Globals
 import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.Global
@@ -10,9 +8,13 @@ import frc.robot.subsystems.Drivetrain
 import harkerrobolib.util.Conversions
 
 /**
- *  A DriveToPosition command drives the robot to a specified position using PID.
+ *  Drives the robot to a specified position using PID.
  *
  *  @param  position    setpoint in feet
+ *
+ *  @author Angela Jia
+ *  @author Finn Frankis
+ *  @version    10/14/18
  */
 class DriveToPosition(val position: Double) : Command() {
 

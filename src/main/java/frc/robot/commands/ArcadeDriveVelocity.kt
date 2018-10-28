@@ -1,11 +1,18 @@
 package frc.robot.commands
 
-import edu.wpi.first.wpilibj.command.Command
 import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
 import harkerrobolib.commands.IndefiniteCommand
 import harkerrobolib.util.MathUtil
 
+/**
+ * Drives the robot using the arcade drive strategy - using one joystick to control movement on
+ * both sides of the robot.
+ *
+ * @author  Angela Jia
+ * @author  Finn Frankis
+ * @version 9/27/18
+ */
 class ArcadeDriveVelocity : IndefiniteCommand() {
     init {
         requires(Drivetrain)

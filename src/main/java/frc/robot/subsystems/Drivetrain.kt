@@ -12,7 +12,8 @@ import frc.robot.commands.TankDriveVelocity
  * Represents the drivetrain on the robot with two master Talons and two follower Talons and functionality
  * for arcade and tank driving modes.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 9/27/18
  */
 object Drivetrain : Subsystem() {

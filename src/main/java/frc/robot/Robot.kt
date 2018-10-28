@@ -14,7 +14,8 @@ import harkerrobolib.auto.AutoMode
  * Represents the overall root of the project, ensuring all subsystems are instantiated and
  * periodically ensuring all commands are called as expected.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 9/27/18
  */
 class Robot : TimedRobot() {

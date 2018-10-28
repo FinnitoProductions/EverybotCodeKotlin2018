@@ -5,7 +5,8 @@ import com.ctre.phoenix.motorcontrol.NeutralMode
 /**
  * Stores constants corresponding to the CAN IDs of all devices on the chain.
  *
- * @author Angela Jia
+ * @author  Angela Jia
+ * @author  Finn Frankis
  * @version 9/27/18
  */
 object CAN_IDs {
