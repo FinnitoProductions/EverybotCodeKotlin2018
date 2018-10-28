@@ -10,6 +10,12 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.MoveArmManual
 import harkerrobolib.util.MathUtil
 
+/**
+ * Represents the arm on the robot with a single Talon for control and position movement based on current spikes.
+ *
+ * @author Angela Jia
+ * @version 10/4/18
+ */
 object Arm : Subsystem() {
 
     val armTalon: TalonSRX = TalonSRX(CAN_IDs.ARM_TALON_ID)

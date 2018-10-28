@@ -9,6 +9,12 @@ import frc.robot.Global
 import frc.robot.commands.IntakeOuttakeManual
 import harkerrobolib.util.MathUtil
 
+/**
+ * Represents the intake on the robot with a two Talons for left and right control.
+ *
+ * @author Angela Jia
+ * @version 10/1/18
+ */
 object Intake : Subsystem() {
     val leftTalon: TalonSRX
     val rightTalon: TalonSRX

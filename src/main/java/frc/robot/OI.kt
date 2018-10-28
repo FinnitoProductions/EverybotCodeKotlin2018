@@ -10,6 +10,12 @@ import harkerrobolib.wrappers.LogitechAnalogGamepad
 import harkerrobolib.wrappers.LogitechGamepad
 import harkerrobolib.wrappers.XboxGamepad
 
+/**
+ * Handles all of the teleoperated input given to the robot, most notably through the joysticks.
+ *
+ * @author Angela Jia
+ * @version 9/27/18
+ */
 object OI {
     val DRIVER_PORT = 0
     val OPERATOR_PORT = 1

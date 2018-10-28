@@ -8,7 +8,13 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.robot.commands.ArcadeDriveVelocity
 import frc.robot.commands.TankDriveVelocity
 
-
+/**
+ * Represents the drivetrain on the robot with two master Talons and two follower Talons and functionality
+ * for arcade and tank driving modes.
+ *
+ * @author Angela Jia
+ * @version 9/27/18
+ */
 object Drivetrain : Subsystem() {
     val leftMaster: TalonSRX
     val rightMaster: TalonSRX

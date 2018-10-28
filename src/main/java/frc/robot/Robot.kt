@@ -11,11 +11,11 @@ import frc.robot.subsystems.Intake
 import harkerrobolib.auto.AutoMode
 
 /**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
+ * Represents the overall root of the project, ensuring all subsystems are instantiated and
+ * periodically ensuring all commands are called as expected.
+ *
+ * @author Angela Jia
+ * @version 9/27/18
  */
 class Robot : TimedRobot() {
 
