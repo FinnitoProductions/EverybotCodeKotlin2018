@@ -120,19 +120,13 @@ object Drivetrain : Subsystem() {
     }
 
     private fun setUpPositionPID() {
-        with (leftMaster) {
-            config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
-            config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
-            config_kD(POSITION_PID_SLOT, KD_POSITION_LEFT, Global.TIMEOUT)
-            config_kF(POSITION_PID_SLOT, KF_POSITION_LEFT, Global.TIMEOUT)
-        }
-
-        with (rightMaster) {
-            config_kP(POSITION_PID_SLOT, KP_POSITION_RIGHT, Global.TIMEOUT)
-            config_kI(POSITION_PID_SLOT, KI_POSITION_RIGHT, Global.TIMEOUT)
-            config_kD(POSITION_PID_SLOT, KD_POSITION_RIGHT, Global.TIMEOUT)
-            config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
-        }
+        val setupPID = {talon : TalonSRX, kF : Double, kP : Double , kI : Double, kD : Double ->
+            talon.config_kF(POSITION_PID_SLOT, kF, Global.TIMEOUT)
+            talon.config_kP(POSITION_PID_SLOT, kP, Global.TIMEOUT)
+            talon.config_kI(POSITION_PID_SLOT, kI, Global.TIMEOUT)
+            talon.config_kD(POSITION_PID_SLOT, kD, Global.TIMEOUT)}
+        setupPID.invoke(leftMaster, Drivetrain.KF_POSITION_LEFT, Drivetrain.KP_POSITION_LEFT, Drivetrain.KI_POSITION_LEFT, Drivetrain.KD_POSITION_LEFT)
+        setupPID.invoke(rightMaster, Drivetrain.KF_POSITION_RIGHT, Drivetrain.KP_POSITION_RIGHT, Drivetrain.KI_POSITION_RIGHT, Drivetrain.KD_POSITION_RIGHT)
     }
     override fun initDefaultCommand() {
         defaultCommand = DEFAULT_COMMAND
