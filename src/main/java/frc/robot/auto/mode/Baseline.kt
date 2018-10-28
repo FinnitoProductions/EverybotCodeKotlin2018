@@ -1,6 +1,7 @@
-package frc.robot.commands
+package frc.robot.auto.mode
 
 import edu.wpi.first.wpilibj.command.Command
+import frc.robot.commands.DriveToPosition
 import frc.robot.subsystems.Drivetrain
 import harkerrobolib.auto.AutoMode
 

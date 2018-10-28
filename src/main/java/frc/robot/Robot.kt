@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.commands.AutonomousCommand
-import frc.robot.commands.Baseline
+import frc.robot.auto.mode.Baseline
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
