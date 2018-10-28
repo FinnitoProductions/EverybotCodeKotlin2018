@@ -34,6 +34,7 @@ object OI {
     fun initBindings() {
         operatorGamepad.buttonA = JoystickButtonWrapper(operatorGamepad, 1)
         operatorGamepad.buttonX = JoystickButtonWrapper(operatorGamepad, 3)
+
         //driver arm buttons
         driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
         driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))
@@ -52,6 +53,6 @@ object OI {
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 
         //toggle arcade and tank
-        driverGamepad.buttonStart.whenPressed(ToggleArcadeTank())
+        //driverGamepad.buttonStart.whenPressed(ToggleArcadeTank())
     }
 }
