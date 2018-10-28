@@ -62,10 +62,12 @@ object Arm : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        armTalon.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
-        armTalon.configPeakCurrentLimit(TALON_PEAK_CURRENT, Global.TIMEOUT)
-        armTalon.configContinuousCurrentLimit(TALON_CONTINUOUS_CURRENT, Global.TIMEOUT)
-        armTalon.enableCurrentLimit(TALON_CURRENT_ENABLE)
+        with (armTalon) {
+            configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+            configPeakCurrentLimit(TALON_PEAK_CURRENT, Global.TIMEOUT)
+            configContinuousCurrentLimit(TALON_CONTINUOUS_CURRENT, Global.TIMEOUT)
+            enableCurrentLimit(TALON_CURRENT_ENABLE)
+        }
 
     }
 

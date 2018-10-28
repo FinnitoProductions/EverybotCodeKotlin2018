@@ -92,14 +92,18 @@ object Drivetrain : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        leftMaster.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
-        leftMaster.configPeakCurrentLimit(TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftMaster.configContinuousCurrentLimit(TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-        leftMaster.enableCurrentLimit(TALON_CURRENT_ENABLE)
-        rightMaster.configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
-        rightMaster.configPeakCurrentLimit(TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightMaster.configContinuousCurrentLimit(TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-        rightMaster.enableCurrentLimit(TALON_CURRENT_ENABLE)
+        with(leftMaster) {
+            configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+            configPeakCurrentLimit(TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
+            configContinuousCurrentLimit(TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
+            enableCurrentLimit(TALON_CURRENT_ENABLE)
+        }
+        with (rightMaster) {
+            configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
+            configPeakCurrentLimit(TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
+            configContinuousCurrentLimit(TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
+            enableCurrentLimit(TALON_CURRENT_ENABLE)
+        }
 
     }
 
@@ -121,15 +125,19 @@ object Drivetrain : Subsystem() {
     }
 
     private fun setUpPositionPID() {
-        leftMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
-        leftMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
-        leftMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_LEFT, Global.TIMEOUT)
-        leftMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_LEFT, Global.TIMEOUT)
+        with (leftMaster) {
+            config_kP(POSITION_PID_SLOT, KP_POSITION_LEFT, Global.TIMEOUT)
+            config_kI(POSITION_PID_SLOT, KI_POSITION_LEFT, Global.TIMEOUT)
+            config_kD(POSITION_PID_SLOT, KD_POSITION_LEFT, Global.TIMEOUT)
+            config_kF(POSITION_PID_SLOT, KF_POSITION_LEFT, Global.TIMEOUT)
+        }
 
-        rightMaster.config_kP(POSITION_PID_SLOT, KP_POSITION_RIGHT, Global.TIMEOUT)
-        rightMaster.config_kI(POSITION_PID_SLOT, KI_POSITION_RIGHT, Global.TIMEOUT)
-        rightMaster.config_kD(POSITION_PID_SLOT, KD_POSITION_RIGHT, Global.TIMEOUT)
-        rightMaster.config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
+        with (rightMaster) {
+            config_kP(POSITION_PID_SLOT, KP_POSITION_RIGHT, Global.TIMEOUT)
+            config_kI(POSITION_PID_SLOT, KI_POSITION_RIGHT, Global.TIMEOUT)
+            config_kD(POSITION_PID_SLOT, KD_POSITION_RIGHT, Global.TIMEOUT)
+            config_kF(POSITION_PID_SLOT, KF_POSITION_RIGHT, Global.TIMEOUT)
+        }
     }
     override fun initDefaultCommand() {
         defaultCommand = DEFAULT_COMMAND

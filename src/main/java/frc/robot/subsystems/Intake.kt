@@ -67,14 +67,18 @@ object Intake : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        leftTalon.configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
-        leftTalon.configPeakCurrentLimit(Intake.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-        leftTalon.configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-        leftTalon.enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
-        rightTalon.configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
-        rightTalon.configPeakCurrentLimit(Intake.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-        rightTalon.configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-        rightTalon.enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
+        with (leftTalon) {
+            configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
+            configPeakCurrentLimit(Intake.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
+            configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
+            enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
+        }
+        with (rightTalon) {
+            configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
+            configPeakCurrentLimit(Intake.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
+            configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
+            enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
+        }
 
     }
 
