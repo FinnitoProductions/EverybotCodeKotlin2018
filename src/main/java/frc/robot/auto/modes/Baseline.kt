@@ -1,4 +1,4 @@
-package frc.robot.auto.mode
+package frc.robot.auto.modes
 
 import edu.wpi.first.wpilibj.command.Command
 import frc.robot.commands.DriveToPosition
