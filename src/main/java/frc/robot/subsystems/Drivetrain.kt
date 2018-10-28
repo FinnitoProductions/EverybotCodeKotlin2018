@@ -92,19 +92,14 @@ object Drivetrain : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        with(leftMaster) {
-            configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
-            configPeakCurrentLimit(TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-            configContinuousCurrentLimit(TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-            enableCurrentLimit(TALON_CURRENT_ENABLE)
-        }
-        with (rightMaster) {
-            configPeakCurrentDuration(TALON_PEAK_TIME, Global.TIMEOUT)
-            configPeakCurrentLimit(TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-            configContinuousCurrentLimit(TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-            enableCurrentLimit(TALON_CURRENT_ENABLE)
-        }
+        val applyCurrentLimit = {talon : TalonSRX, peakLimit : Int, contLimit : Int ->
+            talon.configPeakCurrentDuration(Drivetrain.TALON_PEAK_TIME, Global.TIMEOUT)
+            talon.configPeakCurrentLimit(peakLimit, Global.TIMEOUT)
+            talon.configContinuousCurrentLimit(contLimit, Global.TIMEOUT)
+            talon.enableCurrentLimit(Drivetrain.TALON_CURRENT_ENABLE)}
 
+        applyCurrentLimit.invoke(leftMaster, Drivetrain.TALON_PEAK_LEFT_CURRENT, Drivetrain.TALON_CONTINUOUS_LEFT_CURRENT)
+        applyCurrentLimit.invoke(rightMaster, Drivetrain.TALON_PEAK_RIGHT_CURRENT, Drivetrain.TALON_CONTINUOUS_RIGHT_CURRENT)
     }
 
     fun arcadeDrivePercentOutput(speed: Double, turn: Double) {

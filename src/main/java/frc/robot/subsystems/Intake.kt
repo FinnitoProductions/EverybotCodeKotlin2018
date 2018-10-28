@@ -67,19 +67,14 @@ object Intake : Subsystem() {
     }
 
     private fun setCurrentLimits() {
-        with (leftTalon) {
-            configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
-            configPeakCurrentLimit(Intake.TALON_PEAK_LEFT_CURRENT, Global.TIMEOUT)
-            configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_LEFT_CURRENT, Global.TIMEOUT)
-            enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
-        }
-        with (rightTalon) {
-            configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
-            configPeakCurrentLimit(Intake.TALON_PEAK_RIGHT_CURRENT, Global.TIMEOUT)
-            configContinuousCurrentLimit(Intake.TALON_CONTINUOUS_RIGHT_CURRENT, Global.TIMEOUT)
-            enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)
-        }
+        val applyCurrentLimit = {talon : TalonSRX, peakLimit:Int, contLimit: Int ->
+            talon.configPeakCurrentDuration(Intake.TALON_PEAK_TIME, Global.TIMEOUT)
+            talon.configPeakCurrentLimit(peakLimit, Global.TIMEOUT)
+            talon.configContinuousCurrentLimit(contLimit, Global.TIMEOUT)
+            talon.enableCurrentLimit(Intake.TALON_CURRENT_ENABLE)}
 
+        applyCurrentLimit.invoke(leftTalon, Intake.TALON_PEAK_LEFT_CURRENT, Intake.TALON_CONTINUOUS_RIGHT_CURRENT)
+        applyCurrentLimit.invoke(rightTalon, Intake.TALON_PEAK_RIGHT_CURRENT, Intake.TALON_CONTINUOUS_RIGHT_CURRENT)
     }
 
     /**
