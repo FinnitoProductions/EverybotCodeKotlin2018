@@ -28,9 +28,6 @@ object OI {
     val LOGITECH_DEADBAND = 0.1
 
     init {
-        operatorGamepad.buttonA = JoystickButtonWrapper(operatorGamepad, 1)
-        operatorGamepad.buttonX = JoystickButtonWrapper(operatorGamepad, 3)
-
         //driver arm buttons
         driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
         driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))

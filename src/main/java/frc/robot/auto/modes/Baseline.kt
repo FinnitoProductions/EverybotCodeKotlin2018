@@ -12,22 +12,11 @@ import harkerrobolib.auto.AutoMode
  * @author  Finn Frankis
  * @version 10/16/18
  */
-class Baseline(val startLoc : AutoMode.StartLocation) : AutoMode(startLoc) {
+class Baseline(val startLoc : AutoMode.StartLocation) : AutoMode(startLoc, leftCommands = DriveToPosition(DISTANCE),
+        rightCommands = DriveToPosition(DISTANCE)) {
 
     init {
         requires(Drivetrain)
-    }
-
-    override fun getRightCommands(): Command {
-        return DriveToPosition(DISTANCE)
-    }
-
-    override fun getCenterCommands(): Command {
-        return centerAutonNotDefined
-    }
-
-    override fun getLeftCommands(): Command {
-        return DriveToPosition(DISTANCE)
     }
 
     companion object {
