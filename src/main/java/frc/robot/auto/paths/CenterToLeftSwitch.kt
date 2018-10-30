@@ -10,7 +10,4 @@ import jaci.pathfinder.Waypoint
  * @author  Finn Frankis
  * @version 10/27/18
  */
-class CenterToLeftSwitch :
-        Path(arrayOf(
-                Waypoint(1.64, 13.00, 0.0),
-                Waypoint(10.70,18.00, 20.00)))
+class CenterToLeftSwitch : Path(arrayOf(Waypoint(1.64, 13.00, 0.0), Waypoint(10.65,17.85, 20.00)),accelMax = 10.5)
