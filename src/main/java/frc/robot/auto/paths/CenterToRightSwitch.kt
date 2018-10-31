@@ -2,6 +2,7 @@ package frc.robot.auto.paths
 
 import frc.robot.Autonomous
 import harkerrobolib.auto.Path
+import harkerrobolib.util.MathUtil
 import jaci.pathfinder.Waypoint
 
 /**
@@ -9,6 +10,6 @@ import jaci.pathfinder.Waypoint
  *
  * @author  Angela Jia
  * @author  Finn Frankis
- * @version 10/27/18
+ * @version 10/30/18
  */
-class CenterToLeftSwitch : Path(Autonomous.CENTER_TO_LEFT_SWITCH_WAYPOINTS, accelMax = 10.5)
+class CenterToRightSwitch : Path(MathUtil.reflectY(Autonomous.CENTER_TO_LEFT_SWITCH_WAYPOINTS, Autonomous.CENTER_Y), accelMax = 10.5)

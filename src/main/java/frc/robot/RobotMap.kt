@@ -1,6 +1,7 @@
 package frc.robot
 
 import com.ctre.phoenix.motorcontrol.NeutralMode
+import jaci.pathfinder.Waypoint
 
 /**
  * Stores constants corresponding to the CAN IDs of all devices on the chain.
@@ -34,3 +35,8 @@ object Global {
     const val HAS_TWO_CONTROLLERS = true
 }
 
+
+object Autonomous {
+    val CENTER_TO_LEFT_SWITCH_WAYPOINTS = arrayOf(Waypoint(1.64, 13.00, 0.0), Waypoint(10.65,17.85, 20.00))
+    const val CENTER_Y = 13.5
+}
