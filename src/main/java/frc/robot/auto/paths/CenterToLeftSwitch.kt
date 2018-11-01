@@ -11,4 +11,4 @@ import jaci.pathfinder.Waypoint
  * @author  Finn Frankis
  * @version 10/27/18
  */
-class CenterToLeftSwitch : Path(Autonomous.CENTER_TO_LEFT_SWITCH_WAYPOINTS, accelMax = 10.5)
+class CenterToLeftSwitch : Path(Autonomous.CENTER_TO_LEFT_SWITCH_WAYPOINTS.toTypedArray(), accelMax = 10.5)

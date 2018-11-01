@@ -3,6 +3,7 @@ package frc.robot.commands
 import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj.command.Command
 import frc.robot.subsystems.Arm
+import harkerrobolib.subsystems.ArmSubsystem
 import harkerrobolib.util.Conversions
 
 /**
@@ -15,7 +16,7 @@ import harkerrobolib.util.Conversions
  * @author  Finn Frankis
  * @version 10/4/18
  */
-class MoveArmPosition(val speed: Double, val direction: Arm.ArmDirection) : Command() {
+class MoveArmPosition(val speed: Double, val direction: ArmSubsystem.ArmDirection) : Command() {
     var startTime : Double
 
     init {
