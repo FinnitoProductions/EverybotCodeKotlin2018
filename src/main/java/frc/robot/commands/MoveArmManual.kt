@@ -3,7 +3,7 @@ package frc.robot.commands
 import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Arm
-import harkerrobolib.commands.IndefiniteCommand
+import harkerrobolib.commands.Indefinite
 import harkerrobolib.util.MathUtil
 
 /**
@@ -13,7 +13,7 @@ import harkerrobolib.util.MathUtil
  * @author  Finn Frankis
  * @version 10/6/18
  */
-class MoveArmManual : IndefiniteCommand() {
+class MoveArmManual : Indefinite() {
 
     init {
         requires(Arm)

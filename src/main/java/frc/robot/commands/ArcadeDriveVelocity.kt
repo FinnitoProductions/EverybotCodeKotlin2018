@@ -2,7 +2,7 @@ package frc.robot.commands
 
 import frc.robot.OI
 import frc.robot.subsystems.Drivetrain
-import harkerrobolib.commands.IndefiniteCommand
+import harkerrobolib.commands.Indefinite
 import harkerrobolib.util.MathUtil
 
 /**
@@ -13,7 +13,7 @@ import harkerrobolib.util.MathUtil
  * @author  Finn Frankis
  * @version 9/27/18
  */
-class ArcadeDriveVelocity : IndefiniteCommand() {
+class ArcadeDriveVelocity : Indefinite() {
     init {
         requires(Drivetrain)
     }

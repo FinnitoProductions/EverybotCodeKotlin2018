@@ -3,10 +3,10 @@ package frc.robot.commands
 import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Intake
-import harkerrobolib.commands.IndefiniteCommand
+import harkerrobolib.commands.Indefinite
 import harkerrobolib.util.MathUtil
 
-class IntakeOuttakeManual : IndefiniteCommand() {
+class IntakeOuttakeManual : Indefinite() {
 
     init {
         requires(Intake)

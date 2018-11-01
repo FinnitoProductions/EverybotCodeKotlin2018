@@ -1,7 +1,7 @@
 package frc.robot.commands
 
 import frc.robot.subsystems.Intake
-import harkerrobolib.commands.IndefiniteCommand
+import harkerrobolib.commands.Indefinite
 
 /**
  * Intakes or outtakes cubes indefinitely based on a specified speed and direction.
@@ -13,7 +13,7 @@ import harkerrobolib.commands.IndefiniteCommand
  * @author  Finn Franks
  * @version 10/7/18
  */
-class IntakeOuttakeIndefinite(val speed: Double, val direction: Intake.IntakeDirection) : IndefiniteCommand() {
+class IntakeOuttakeIndefinite(val speed: Double, val direction: Intake.IntakeDirection) : Indefinite() {
 
     init {
         requires(Intake)

@@ -5,7 +5,6 @@ import frc.robot.commands.MoveArmPosition
 import frc.robot.commands.ToggleArcadeTank
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
-import harkerrobolib.wrappers.JoystickButtonWrapper
 import harkerrobolib.wrappers.LogitechAnalogGamepad
 import harkerrobolib.wrappers.LogitechGamepad
 import harkerrobolib.wrappers.XboxGamepad

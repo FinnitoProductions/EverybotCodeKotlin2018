@@ -39,7 +39,7 @@ dependencies {
     compile navx()
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile files('lib/Pathfinder-Java-1.8.jar')
-    compile files ('lib/HarkerRoboLib-3.0.2.jar')
+    compile files ('lib/HarkerRoboLib-4.1.jar')
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
