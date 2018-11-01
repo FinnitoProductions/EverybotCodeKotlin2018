@@ -5,6 +5,7 @@ import frc.robot.commands.MoveArmPosition
 import frc.robot.commands.ToggleArcadeTank
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
+import harkerrobolib.subsystems.HSArm
 import harkerrobolib.wrappers.LogitechAnalogGamepad
 import harkerrobolib.wrappers.LogitechGamepad
 import harkerrobolib.wrappers.XboxGamepad
@@ -28,12 +29,12 @@ object OI {
 
     init {
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
-        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))
+        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
+        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
 
         //operator arm buttons
-        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, Arm.ArmDirection.DOWN))
-        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, Arm.ArmDirection.UP))
+        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
+        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
 
         //operator intake and outtake buttons
         val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)

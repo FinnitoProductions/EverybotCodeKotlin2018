@@ -4,6 +4,7 @@ import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Arm
 import harkerrobolib.commands.Indefinite
+import harkerrobolib.subsystems.HSArm
 import harkerrobolib.util.MathUtil
 
 /**
@@ -37,10 +38,10 @@ class MoveArmManual : Indefinite() {
             val rightOperatorTrigger = MathUtil.map(OI.operatorGamepad.rightTrigger, 0.0, 1.0,
                     0.0, Arm.MAX_MANUAL_SPEED)
             if(leftOperatorTrigger > rightOperatorTrigger) {
-                Arm.armMotionPercentOutput(leftOperatorTrigger, Arm.ArmDirection.UP)
+                Arm.armMotionPercentOutput(leftOperatorTrigger, HSArm.ArmDirection.UP)
             }
             else {
-                Arm.armMotionPercentOutput(rightOperatorTrigger, Arm.ArmDirection.DOWN)
+                Arm.armMotionPercentOutput(rightOperatorTrigger, HSArm.ArmDirection.DOWN)
             }
         }
     }
