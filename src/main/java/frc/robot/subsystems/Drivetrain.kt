@@ -66,8 +66,8 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
     private fun invertTalons() {
         leftMaster.inverted = LEFT_MASTER_INVERTED
         rightMaster.inverted = RIGHT_MASTER_INVERTED
-        leftFollower!!.inverted = LEFT_FOLLOWER_INVERTED
-        rightFollower!!.inverted = RIGHT_FOLLOWER_INVERTED
+        leftFollower?.inverted = LEFT_FOLLOWER_INVERTED
+        rightFollower?.inverted = RIGHT_FOLLOWER_INVERTED
     }
 
     fun arcadeDrivePercentOutput(speed: Double, turn: Double) {
