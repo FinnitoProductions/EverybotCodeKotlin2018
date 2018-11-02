@@ -21,7 +21,6 @@ class MoveArmManual : Indefinite() {
     }
 
     override fun execute() {
-
         var driverJoystickInput = MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
          if (Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE)
              driverJoystickInput = 0.0

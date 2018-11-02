@@ -2,6 +2,7 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj.command.Command
+import frc.robot.OI
 import frc.robot.subsystems.Arm
 import harkerrobolib.subsystems.HSArm
 import harkerrobolib.util.Conversions
@@ -32,10 +33,10 @@ class MoveArmPosition(val speed: Double, val direction: HSArm.ArmDirection) : Co
         return (Timer.getFPGATimestamp() - startTime) > 
         Conversions.convertTime(Conversions.TimeUnit.MILLISECONDS,  Arm.TALON_PEAK_TIME.toDouble(), 
          Conversions.TimeUnit.SECONDS) && 
-         Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE 
+         Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE || OI.driverGamepad.rightY > OI.XBOX_DEADBAND
     }
 
     override fun execute() {
-        Arm.armMotionPercentOutput(speed, direction)
+        Arm.armMotionPercentOutput(speed * if (direction == HSArm.ArmDirection.UP) 1 else -1)
     }
 }
