@@ -30,9 +30,10 @@ object Global {
     const val TIMEOUT = 10
 
     //PID constants
-    const val PID_PRIMARY = 0;
-    const val PID_AUXILIARY = 1;
+    const val PID_PRIMARY = 0
+    const val PID_AUXILIARY = 1
     const val HAS_TWO_CONTROLLERS = true
+    const val ROBOT_WIDTH = 0.0
 }
 
 

@@ -51,7 +51,6 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
     const val LEFT_ENCODER_PHASE = false
     const val RIGHT_ENCODER_PHASE = false
 
-    const val INITIAL_POSITION = 0
 
     val DEFAULT_COMMAND = ArcadeDriveVelocity()
 

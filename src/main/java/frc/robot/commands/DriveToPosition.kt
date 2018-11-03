@@ -1,5 +1,6 @@
 package frc.robot.commands
 
+import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.FeedbackDevice
 import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
@@ -34,18 +35,18 @@ class DriveToPosition(val position: Double) : Command() {
         Drivetrain.leftMaster.setSensorPhase(Drivetrain.LEFT_ENCODER_PHASE)
         Drivetrain.rightMaster.setSensorPhase(Drivetrain.RIGHT_ENCODER_PHASE)
 
-        Drivetrain.leftMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Global.PID_PRIMARY, Global.TIMEOUT)
-        Drivetrain.rightMaster.setSelectedSensorPosition(Drivetrain.INITIAL_POSITION, Global.PID_PRIMARY, Global.TIMEOUT)
+        Drivetrain.leftMaster.setSelectedSensorPosition(0, Global.PID_PRIMARY, Global.TIMEOUT)
+        Drivetrain.rightMaster.setSelectedSensorPosition(0, Global.PID_PRIMARY, Global.TIMEOUT)
     }
 
     override fun isFinished(): Boolean {
-        return Math.abs(position - Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY)) < Drivetrain.ALLOWABLE_POSITION_ERROR &&
-                Math.abs(position - Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY)) < Drivetrain.ALLOWABLE_POSITION_ERROR
+        return false;//Math.abs(position - Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY)) < Drivetrain.ALLOWABLE_POSITION_ERROR &&
+                //Math.abs(position - Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY)) < Drivetrain.ALLOWABLE_POSITION_ERROR
     }
 
     override fun execute() {
-//        Drivetrain.leftMaster[Position] = convertedPosition
-//       Drivetrain.rightMaster[Position] = convertedPosition
+//        Drivetrain.leftMaster[ControlMode.Position] = convertedPosition
+//       Drivetrain.rightMaster[ControlMode.Position] = convertedPosition
         SmartDashboard.putNumber("left pos", Drivetrain.leftMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
         SmartDashboard.putNumber("right pos", Drivetrain.rightMaster.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())
     }
