@@ -19,9 +19,9 @@ import harkerrobolib.util.Conversions
  *
  * @author  Angela Jia
  * @author  Finn Frankis
- * @version 10/4/18
+ * @version 11/3/18
  */
-class MoveArmPositionEncoder(val position: Double) : Command() {
+class MoveArmPositionEncoder(val position: Int) : Command() {
 
     init {
         requires(Arm)

@@ -2,6 +2,7 @@ package frc.robot
 
 import frc.robot.commands.IntakeOuttakeIndefinite
 import frc.robot.commands.MoveArmPosition
+import frc.robot.commands.MoveArmPositionEncoder
 import frc.robot.commands.ToggleArcadeTank
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
@@ -29,8 +30,8 @@ object OI {
 
     init {
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
-        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
+        driverGamepad.buttonA.whenPressed(MoveArmPositionEncoder(Arm.MAX_UP_POSITION))
+        driverGamepad.buttonY.whenPressed(MoveArmPositionEncoder(Arm.MAX_DOWN_POSITION))
 
         //operator arm buttons
         operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
