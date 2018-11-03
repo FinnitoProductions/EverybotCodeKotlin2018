@@ -22,13 +22,6 @@ class MoveArmManual : Indefinite() {
 
     override fun execute() {
         var driverJoystickInput = MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
-         if (Arm.getTalonCurrent() >= Arm.TALON_CURRENT_SPIKE)
-             driverJoystickInput = 0.0
-        /*if (Math.signum(driverJoystickInput).toInt() == OI.JOYSTICK_UP)
-            Arm.armMotionPercentOutput(driverJoystickInput, Arm.ArmDirection.UP)
-        else
-            Arm.armMotionPercentOutput(driverJoystickInput, Arm.ArmDirection.DOWN)
-        SmartDashboard.putNumber("Right Y", driverJoystickInput)*/
         Arm.armMotionPercentOutput(driverJoystickInput)
 
         if(Global.HAS_TWO_CONTROLLERS && Math.abs(driverJoystickInput) <= OI.XBOX_DEADBAND) {
