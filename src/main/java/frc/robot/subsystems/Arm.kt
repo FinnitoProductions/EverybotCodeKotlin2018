@@ -28,11 +28,11 @@ object Arm : HSArm(HSTalon(CAN_IDs.ARM_TALON_ID), 0.05) {
         const val TALON_CONTINUOUS_CURRENT = 5
         const val TALON_PEAK_TIME = 1000
         const val TALON_CURRENT_ENABLE = true
-        const val MAX_MANUAL_SPEED = 0.3
+        const val MAX_MANUAL_SPEED = 1.0
         const val TALON_MOTION_DIRECTION = 10
-        const val TALON_CURRENT_SPIKE = 3
-        const val MAX_POSITION_UP_SPEED = 0.6
-        const val MAX_POSITION_DOWN_SPEED = 0.5
+        const val TALON_CURRENT_SPIKE = 1.5
+        const val MAX_POSITION_UP_SPEED = 0.7
+        const val MAX_POSITION_DOWN_SPEED = 0.6
         const val FEED_FORWARD_GRAV = 0.05
 
 
