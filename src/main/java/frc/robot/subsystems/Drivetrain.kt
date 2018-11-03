@@ -54,6 +54,10 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
 
     val DEFAULT_COMMAND = ArcadeDriveVelocity()
 
+    enum class TurnDirection {
+        LEFT, RIGHT
+    }
+
     fun talonInit() {
         followMasters()
         invertTalons()
