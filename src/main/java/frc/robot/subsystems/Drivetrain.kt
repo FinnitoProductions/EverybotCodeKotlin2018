@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.NeutralMode
 import frc.robot.commands.ArcadeDriveVelocity
 import harkerrobolib.subsystems.HSDrivetrain
+import harkerrobolib.util.Conversions
 import harkerrobolib.wrappers.HSTalon
 
 /**
@@ -44,7 +45,21 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
     const val KD_POSITION_RIGHT = 0.0
     const val KF_POSITION_RIGHT = 0.0
 
+    const val KP_MOTION_MAGIC_LEFT = 0.0
+    const val KI_MOTION_MAGIC_LEFT = 0.0
+    const val KD_MOTION_MAGIC_LEFT = 0.0
+    const val KF_MOTION_MAGIC_LEFT = 0.0
+
+    const val KP_MOTION_MAGIC_RIGHT = 0.0
+    const val KI_MOTION_MAGIC_RIGHT = 0.0
+    const val KD_MOTION_MAGIC_RIGHT = 0.0
+    const val KF_MOTION_MAGIC_RIGHT = 0.0
+
+    const val CRUISE_VELOCITY_MOTION_MAGIC = 0.0
+    const val ACCELERATION_MOTION_MAGIC = 0.0
+
     const val POSITION_PID_SLOT = 0
+    const val MOTION_MAGIC_PID_SLOT = 1
 
     const val ALLOWABLE_POSITION_ERROR = 1.0
 
@@ -64,6 +79,7 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
         setNeutralMode(TALON_NEUTRAL_MODE)
         setCurrentLimit(TALON_PEAK_CURRENT, TALON_PEAK_TIME, TALON_CONTINUOUS_CURRENT)
         setUpPositionPID()
+        configMotionMagic()
     }
 
     private fun invertTalons() {
@@ -91,16 +107,37 @@ object Drivetrain : HSDrivetrain(HSTalon(CAN_IDs.LEFT_MASTER_ID), HSTalon(CAN_ID
     }
 
     private fun setUpPositionPID() {
-        val setupPID = {talon : TalonSRX, kF : Double, kP : Double , kI : Double, kD : Double ->
+        val setupPID = { talon: TalonSRX, kF: Double, kP: Double, kI: Double, kD: Double ->
             talon.config_kF(POSITION_PID_SLOT, kF, Global.TIMEOUT)
             talon.config_kP(POSITION_PID_SLOT, kP, Global.TIMEOUT)
             talon.config_kI(POSITION_PID_SLOT, kI, Global.TIMEOUT)
-            talon.config_kD(POSITION_PID_SLOT, kD, Global.TIMEOUT)}
+            talon.config_kD(POSITION_PID_SLOT, kD, Global.TIMEOUT)
+        }
 
         setupPID.invoke(leftMaster, Drivetrain.KF_POSITION_LEFT, Drivetrain.KP_POSITION_LEFT, Drivetrain.KI_POSITION_LEFT, Drivetrain.KD_POSITION_LEFT)
         setupPID.invoke(rightMaster, Drivetrain.KF_POSITION_RIGHT, Drivetrain.KP_POSITION_RIGHT, Drivetrain.KI_POSITION_RIGHT, Drivetrain.KD_POSITION_RIGHT)
     }
+
     override fun initDefaultCommand() {
         defaultCommand = DEFAULT_COMMAND
+    }
+
+    fun configMotionMagic() {
+        with(leftMaster) {
+            config_kF(MOTION_MAGIC_PID_SLOT, KF_MOTION_MAGIC_LEFT)
+            config_kP(MOTION_MAGIC_PID_SLOT, KP_MOTION_MAGIC_LEFT)
+            config_kI(MOTION_MAGIC_PID_SLOT, KI_MOTION_MAGIC_LEFT)
+            config_kD(MOTION_MAGIC_PID_SLOT, KD_MOTION_MAGIC_LEFT)
+            configMotionCruiseVelocity(CRUISE_VELOCITY_MOTION_MAGIC.toInt())
+            configMotionAcceleration(ACCELERATION_MOTION_MAGIC.toInt())
+        }
+        with(rightMaster) {
+            config_kF(MOTION_MAGIC_PID_SLOT, KF_MOTION_MAGIC_RIGHT)
+            config_kP(MOTION_MAGIC_PID_SLOT, KP_MOTION_MAGIC_RIGHT)
+            config_kI(MOTION_MAGIC_PID_SLOT, KI_MOTION_MAGIC_RIGHT)
+            config_kD(MOTION_MAGIC_PID_SLOT, KD_MOTION_MAGIC_RIGHT)
+            configMotionCruiseVelocity(CRUISE_VELOCITY_MOTION_MAGIC.toInt())
+            configMotionAcceleration(ACCELERATION_MOTION_MAGIC.toInt())
+        }
     }
 }

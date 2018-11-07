@@ -4,6 +4,6 @@ import frc.robot.commands.DriveToPosition
 import harkerrobolib.auto.AutoMode
 import harkerrobolib.auto.SequentialCommandGroup
 
-class CenterSwitch(val endLoc : AutoMode.StartLocation ) : AutoMode(endLoc) {
-
-}
+class CenterSwitch(val endLoc : AutoMode.StartLocation) : AutoMode(endLoc,
+                    leftCommands = SequentialCommandGroup(),
+                    rightCommands = SequentialCommandGroup() )
