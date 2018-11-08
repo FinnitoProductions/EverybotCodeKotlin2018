@@ -4,6 +4,7 @@ import frc.robot.Global
 import frc.robot.OI
 import frc.robot.subsystems.Intake
 import harkerrobolib.commands.Indefinite
+import harkerrobolib.subsystems.HSIntake
 import harkerrobolib.util.MathUtil
 
 class IntakeOuttakeManual : Indefinite() {
@@ -26,9 +27,9 @@ class IntakeOuttakeManual : Indefinite() {
             val driverIntakeInput = OI.driverGamepad.leftTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.leftTrigger, OI.XBOX_DEADBAND)
             val driverOuttakeInput = OI.driverGamepad.rightTrigger //MathUtil.mapJoystickOutput(OI.driverGamepad.rightTrigger, OI.XBOX_DEADBAND)
             if (driverIntakeInput > driverOuttakeInput) {
-                Intake.intakeOuttakeCube(driverIntakeInput, Intake.IntakeDirection.IN)
+                Intake.intakeOuttakeCube(driverIntakeInput, HSIntake.IntakeDirection.IN)
             } else {
-                Intake.intakeOuttakeCube(driverOuttakeInput, Intake.IntakeDirection.OUT)
+                Intake.intakeOuttakeCube(driverOuttakeInput, HSIntake.IntakeDirection.OUT)
             }
         }
     }

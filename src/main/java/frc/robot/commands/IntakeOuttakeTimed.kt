@@ -2,6 +2,7 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.command.TimedCommand
 import frc.robot.subsystems.Intake
+import harkerrobolib.subsystems.HSIntake
 
 /**
  * Intakes or outtakes cubes for a certain amount of time using a specified output and direction.
@@ -14,7 +15,7 @@ import frc.robot.subsystems.Intake
  * @author  Finn Frankis
  * @version 10/3/18
  */
-class IntakeOuttakeTimed(val time: Double, val output: Double, val direction: Intake.IntakeDirection) : TimedCommand(time) {
+class IntakeOuttakeTimed(val time: Double, val output: Double, val direction: HSIntake.IntakeDirection) : TimedCommand(time) {
 
     init {
         requires(Intake)
