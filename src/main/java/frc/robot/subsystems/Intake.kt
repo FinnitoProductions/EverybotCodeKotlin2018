@@ -37,7 +37,7 @@ object Intake : HSIntake(HSTalon(CAN_IDs.LEFT_INTAKE_ID), HSTalon(CAN_IDs.RIGHT_
 
     fun talonInit() {
         invertTalons()
-        setNeutralModes(NeutralMode.Brake)
+        setNeutralModes(TALON_NEUTRAL_MODE)
         setCurrentLimits(TALON_PEAK_TIME, TALON_PEAK_CURRENT, TALON_CONTINUOUS_CURRENT)
     }
 
