@@ -23,11 +23,7 @@ object Intake : HSIntake(HSTalon(CAN_IDs.LEFT_INTAKE_ID), HSTalon(CAN_IDs.RIGHT_
     const val LEFT_TALON_INVERTED = false
     const val RIGHT_TALON_INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
-    //const val TALON_PEAK_RIGHT_CURRENT = 0
-    //const val TALON_PEAK_LEFT_CURRENT = 0
     const val TALON_PEAK_CURRENT = 0
-    //const val TALON_CONTINUOUS_LEFT_CURRENT = 0
-    //const val TALON_CONTINUOUS_RIGHT_CURRENT = 0
     const val TALON_CONTINUOUS_CURRENT = 0
     const val TALON_PEAK_TIME = 0
     const val TALON_CURRENT_ENABLE = true
@@ -38,11 +34,6 @@ object Intake : HSIntake(HSTalon(CAN_IDs.LEFT_INTAKE_ID), HSTalon(CAN_IDs.RIGHT_
     const val DEFAULT_OUTTAKE_SPEED = 1.0
 
     val DEFAULT_COMMAND = IntakeOuttakeManual()
-
-    enum class IntakeDirection {
-        IN, OUT
-    }
-
 
     fun talonInit() {
         invertTalons()
