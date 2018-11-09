@@ -24,9 +24,9 @@ object Arm : HSArm(HSTalon(CAN_IDs.ARM_TALON_ID), 0.05) {
     const val INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
 
-    const val TALON_PEAK_CURRENT = 17
-    const val TALON_CONTINUOUS_CURRENT = 10
-    const val TALON_PEAK_TIME = 1000
+    const val TALON_PEAK_CURRENT = 25
+    const val TALON_CONTINUOUS_CURRENT = 15
+    const val TALON_PEAK_TIME = 750
     const val TALON_CURRENT_ENABLE = true
     const val MAX_MANUAL_SPEED = 1.0
     const val TALON_MOTION_DIRECTION = 1
@@ -95,5 +95,9 @@ object Arm : HSArm(HSTalon(CAN_IDs.ARM_TALON_ID), 0.05) {
             configMotionCruiseVelocity(CRUISE_VELOCITY_MOTION_MAGIC.toInt())
             configMotionAcceleration(ACCELERATION_MOTION_MAGIC.toInt())
         }
+    }
+
+    fun moveArmPercentOutput (output : Double) {
+        talon.set(ControlMode.PercentOutput, output, DemandType.ArbitraryFeedForward, FEED_FORWARD_GRAV)
     }
 }

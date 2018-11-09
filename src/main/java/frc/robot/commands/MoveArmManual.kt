@@ -22,7 +22,7 @@ class MoveArmManual : Indefinite() {
 
     override fun execute() {
         var driverJoystickInput = MathUtil.mapJoystickOutput(OI.driverGamepad.rightY, OI.XBOX_DEADBAND)
-        Arm.armMotionPercentOutput(driverJoystickInput)
+        Arm.moveArmPercentOutput(driverJoystickInput)
 
         if(Global.HAS_TWO_CONTROLLERS && Math.abs(driverJoystickInput) <= OI.XBOX_DEADBAND) {
             val leftOperatorTrigger = MathUtil.map(OI.operatorGamepad.leftTrigger, 0.0, 1.0,
