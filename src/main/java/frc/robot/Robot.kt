@@ -64,6 +64,7 @@ class Robot : TimedRobot() {
 
         
             SmartDashboard.putNumber ("Arm Current", Arm.getTalonCurrent())
+            SmartDashboard.putNumber("Arm Position", Arm.talon.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())//Arm.
         }
 
         /**

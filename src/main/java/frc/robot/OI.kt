@@ -1,12 +1,10 @@
 package frc.robot
 
-import frc.robot.commands.IntakeOuttakeIndefinite
-import frc.robot.commands.MoveArmPosition
-import frc.robot.commands.MoveArmPositionEncoder
-import frc.robot.commands.ToggleArcadeTank
+import frc.robot.commands.*
 import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Intake
 import harkerrobolib.subsystems.HSArm
+import harkerrobolib.subsystems.HSIntake
 import harkerrobolib.wrappers.LogitechAnalogGamepad
 import harkerrobolib.wrappers.LogitechGamepad
 import harkerrobolib.wrappers.XboxGamepad
@@ -30,19 +28,19 @@ object OI {
 
     init {
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmPositionEncoder(Arm.MAX_UP_POSITION))
-        driverGamepad.buttonY.whenPressed(MoveArmPositionEncoder(Arm.MAX_DOWN_POSITION))
+        driverGamepad.buttonA.whenPressed(MoveArmMotionMagic(Arm.MAX_UP_POSITION))
+        driverGamepad.buttonY.whenPressed(MoveArmMotionMagic(Arm.MAX_DOWN_POSITION))
 
         //operator arm buttons
         operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
         operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
 
         //operator intake and outtake buttons
-        val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, Intake.IntakeDirection.IN)
+        val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, HSIntake.IntakeDirection.IN)
         operatorGamepad.buttonB.whenPressed(intakeCommand)
         operatorGamepad.buttonB.cancelWhenReleased(intakeCommand)
 
-        val outtakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_OUTTAKE_SPEED, Intake.IntakeDirection.OUT)
+        val outtakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_OUTTAKE_SPEED, HSIntake.IntakeDirection.OUT)
         operatorGamepad.buttonX.whenPressed(outtakeCommand)
         operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
 
