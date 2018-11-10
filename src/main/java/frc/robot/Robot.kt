@@ -3,6 +3,7 @@ package frc.robot
 import com.ctre.phoenix.motorcontrol.Faults
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
+import edu.wpi.first.wpilibj.command.WaitCommand
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.robot.commands.AutonomousCommand
 import frc.robot.auto.modes.Baseline
@@ -11,6 +12,7 @@ import frc.robot.subsystems.Arm
 import frc.robot.subsystems.Drivetrain
 import frc.robot.subsystems.Intake
 import harkerrobolib.auto.AutoMode
+import harkerrobolib.auto.SequentialCommandGroup
 
 /**
  * Represents the overall root of the project, ensuring all subsystems are instantiated and
@@ -41,7 +43,7 @@ class Robot : TimedRobot() {
         Drivetrain.talonInit()
         Intake.talonInit()
         Arm.talonInit()
-        ArcadeDriveVelocityTimed(1.75, 1.0).start();
+        SequentialCommandGroup(WaitCommand(5.0), ArcadeDriveVelocityTimed(2.0, -1.0)).start()
     }
         /**
          * This function is called periodically during autonomous.

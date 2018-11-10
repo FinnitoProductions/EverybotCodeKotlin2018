@@ -23,8 +23,8 @@ class ArcadeDriveVelocity : Indefinite() {
      * to the desired values to move the robot optimally.
      */
     override fun execute() {
-        val speed = -MathUtil.mapJoystickOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND)
-        val turn = MathUtil.mapJoystickOutput(OI.driverGamepad.leftX, OI.XBOX_DEADBAND)
+        val speed = -MathUtil.mapJoystickOutput(OI.driverGamepad.leftY, OI.XBOX_DEADBAND) * 0.75
+        val turn = MathUtil.mapJoystickOutput(OI.driverGamepad.leftX, OI.XBOX_DEADBAND) * 0.75
         Drivetrain.arcadeDrivePercentOutput(speed * OI.JOYSTICK_UP, turn)
     }
 }

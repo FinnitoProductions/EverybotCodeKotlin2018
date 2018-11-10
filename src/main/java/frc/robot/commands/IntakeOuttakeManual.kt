@@ -30,7 +30,7 @@ class IntakeOuttakeManual : Indefinite() {
             if (driverIntakeInput > driverOuttakeInput) {
                 Intake.intakeOuttakeCube(driverIntakeInput, HSIntake.IntakeDirection.IN)
             } else {
-                Intake.intakeOuttakeCube(driverOuttakeInput, HSIntake.IntakeDirection.OUT)
+                Intake.intakeOuttakeCube(-driverOuttakeInput, HSIntake.IntakeDirection.OUT)
             }
         }
     }
