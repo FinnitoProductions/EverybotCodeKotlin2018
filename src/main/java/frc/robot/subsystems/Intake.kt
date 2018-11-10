@@ -10,6 +10,7 @@ import frc.robot.commands.IntakeOuttakeManual
 import harkerrobolib.subsystems.HSIntake
 import harkerrobolib.util.MathUtil
 import harkerrobolib.wrappers.HSTalon
+import javax.naming.ldap.Control
 
 /**
  * Represents the intake on the robot with a two Talons for left and right control.
@@ -23,9 +24,9 @@ object Intake : HSIntake(HSTalon(CAN_IDs.LEFT_INTAKE_ID), HSTalon(CAN_IDs.RIGHT_
     const val LEFT_TALON_INVERTED = false
     const val RIGHT_TALON_INVERTED = true
     val TALON_NEUTRAL_MODE = NeutralMode.Brake
-    const val TALON_PEAK_CURRENT = 0
-    const val TALON_CONTINUOUS_CURRENT = 0
-    const val TALON_PEAK_TIME = 0
+    const val TALON_PEAK_CURRENT = 20
+    const val TALON_CONTINUOUS_CURRENT = 15
+    const val TALON_PEAK_TIME = 2000
     const val TALON_CURRENT_ENABLE = true
     const val MAX_OUTTAKE_SPEED = 1.0
     const val MIN_OUTTAKE_SPEED = 0.0
@@ -51,5 +52,9 @@ object Intake : HSIntake(HSTalon(CAN_IDs.LEFT_INTAKE_ID), HSTalon(CAN_IDs.RIGHT_
         defaultCommand = DEFAULT_COMMAND
     }
 
+    fun intakeOuttakeCubeManual (leftOutput: Double, rightOutput:Double) {
+        leftTalon.set(ControlMode.PercentOutput, leftOutput)
+        rightTalon.set(ControlMode.PercentOutput, rightOutput)
+    }
 
 }

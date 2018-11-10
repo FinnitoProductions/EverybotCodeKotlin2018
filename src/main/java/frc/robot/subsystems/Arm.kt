@@ -64,11 +64,15 @@ object Arm : HSArm(HSTalon(CAN_IDs.ARM_TALON_ID), 0.05) {
 
 
     fun talonInit() {
+        talon.overrideLimitSwitchesEnable(true);
+        talon.overrideSoftLimitsEnable(true);
+        talon.configForwardSoftLimitEnable(false)
+        talon.configReverseSoftLimitEnable(false)
         invertTalons()
         setNeutralModes()
-        setCurrentLimits(TALON_PEAK_TIME, TALON_PEAK_CURRENT, TALON_CONTINUOUS_CURRENT)
-        configSoftLimit()
-        configMotionMagic()
+        //setCurrentLimits(TALON_PEAK_TIME, TALON_PEAK_CURRENT, TALON_CONTINUOUS_CURRENT)
+        //configSoftLimit()
+        //configMotionMagic()
     }
 
     private fun invertTalons() {
@@ -98,6 +102,7 @@ object Arm : HSArm(HSTalon(CAN_IDs.ARM_TALON_ID), 0.05) {
     }
 
     fun moveArmPercentOutput (output : Double) {
-        talon.set(ControlMode.PercentOutput, output, DemandType.ArbitraryFeedForward, FEED_FORWARD_GRAV)
+        talon.set(ControlMode.PercentOutput, output)
+        System.out.println(output)//, DemandType.ArbitraryFeedForward, FEED_FORWARD_GRAV)
     }
 }

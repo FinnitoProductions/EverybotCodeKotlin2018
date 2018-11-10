@@ -37,6 +37,6 @@ class MoveArmPosition(val speed: Double, val direction: HSArm.ArmDirection) : Co
     }
 
     override fun execute() {
-        Arm.armMotionPercentOutput(speed * if (direction == HSArm.ArmDirection.UP) 1 else -1)
+        Arm.moveArmPercentOutput(speed * if (direction == HSArm.ArmDirection.UP) -1 else 1)
     }
 }

@@ -28,21 +28,21 @@ object OI {
 
     init {
         //driver arm buttons
-        driverGamepad.buttonA.whenPressed(MoveArmMotionMagic(Arm.MAX_UP_POSITION))
-        driverGamepad.buttonY.whenPressed(MoveArmMotionMagic(Arm.MAX_DOWN_POSITION))
+        driverGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
+        driverGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
 
         //operator arm buttons
-        operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
-        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))
+        /*operatorGamepad.buttonA.whenPressed(MoveArmPosition(Arm.MAX_POSITION_DOWN_SPEED, HSArm.ArmDirection.DOWN))
+        operatorGamepad.buttonY.whenPressed(MoveArmPosition(Arm.MAX_POSITION_UP_SPEED, HSArm.ArmDirection.UP))*/
 
         //operator intake and outtake buttons
         val intakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_INTAKE_SPEED, HSIntake.IntakeDirection.IN)
-        operatorGamepad.buttonB.whenPressed(intakeCommand)
-        operatorGamepad.buttonB.cancelWhenReleased(intakeCommand)
+        operatorGamepad.buttonA.whenPressed(intakeCommand)
+        operatorGamepad.buttonA.cancelWhenReleased(intakeCommand)
 
-        val outtakeCommand = IntakeOuttakeIndefinite(Intake.DEFAULT_OUTTAKE_SPEED, HSIntake.IntakeDirection.OUT)
-        operatorGamepad.buttonX.whenPressed(outtakeCommand)
-        operatorGamepad.buttonX.cancelWhenReleased(outtakeCommand)
+        val outtakeCommand = IntakeOuttakeIndefinite(-Intake.DEFAULT_OUTTAKE_SPEED, HSIntake.IntakeDirection.OUT)
+        operatorGamepad.buttonY.whenPressed(outtakeCommand)
+        operatorGamepad.buttonY.cancelWhenReleased(outtakeCommand)
 
         //toggle arcade and tank
         //driverGamepad.buttonStart.whenPressed(ToggleArcadeTank())

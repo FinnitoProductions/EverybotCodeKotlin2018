@@ -21,7 +21,7 @@ class IntakeOuttakeManual : Indefinite() {
         if (Global.HAS_TWO_CONTROLLERS) {
             leftOperatorJoystickInput = MathUtil.mapJoystickOutput(OI.operatorGamepad.leftY, OI.LOGITECH_DEADBAND)
             rightOperatorJoystickInput = MathUtil.mapJoystickOutput(OI.operatorGamepad.rightY, OI.LOGITECH_DEADBAND)
-            Intake.intakeOuttakeCube(leftOperatorJoystickInput, -rightOperatorJoystickInput)
+            Intake.intakeOuttakeCubeManual(-rightOperatorJoystickInput, leftOperatorJoystickInput)
         }
 
         if (Math.abs(leftOperatorJoystickInput) <= OI.LOGITECH_DEADBAND && Math.abs(rightOperatorJoystickInput) <= OI.LOGITECH_DEADBAND) {
