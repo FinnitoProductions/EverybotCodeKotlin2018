@@ -34,16 +34,17 @@ class Robot : TimedRobot() {
         Intake
         Arm
         OI
+
+        Drivetrain.talonInit()
+        Intake.talonInit()
+        Arm.talonInit()
     }
 
     /**
      * This function is run once each time the robot enters autonomous mode.
      */
     override fun autonomousInit() {
-        Drivetrain.talonInit()
-        Intake.talonInit()
-        Arm.talonInit()
-        SequentialCommandGroup(WaitCommand(5.0), ArcadeDriveVelocityTimed(2.0, -1.0)).start()
+        ArcadeDriveVelocityTimed(3.0, -0.5).start()
     }
         /**
          * This function is called periodically during autonomous.
@@ -56,9 +57,6 @@ class Robot : TimedRobot() {
          * This function is called once each time the robot enters teleoperated mode.
          */
         override fun teleopInit() {
-            Drivetrain.talonInit()
-            Intake.talonInit()
-            Arm.talonInit()
         }
 
         /**
@@ -66,8 +64,6 @@ class Robot : TimedRobot() {
          */
         override fun teleopPeriodic() {
             Scheduler.getInstance().run()
-            Arm.talon.getFaults(fault);
-            System.out.println(fault);
             SmartDashboard.putNumber ("Arm Current", Arm.getTalonCurrent())
             SmartDashboard.putNumber("Arm Position", Arm.talon.getSelectedSensorPosition(Global.PID_PRIMARY).toDouble())//Arm.
         }

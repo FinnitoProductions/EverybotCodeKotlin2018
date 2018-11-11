@@ -5,6 +5,9 @@ import frc.robot.subsystems.Drivetrain
 
 class ArcadeDriveVelocityTimed(val time: Double, val speed: Double) : TimedCommand(time) {
 
+    init {
+        requires (Drivetrain)
+    }
     override fun execute() {
         Drivetrain.arcadeDrivePercentOutput(speed, 0.0)
     }
