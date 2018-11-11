@@ -44,7 +44,8 @@ class Robot : TimedRobot() {
      * This function is run once each time the robot enters autonomous mode.
      */
     override fun autonomousInit() {
-        ArcadeDriveVelocityTimed(3.0, -0.5).start()
+        AutonomousCommand().start()
+
     }
         /**
          * This function is called periodically during autonomous.

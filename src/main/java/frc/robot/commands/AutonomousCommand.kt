@@ -1,6 +1,8 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj.command.CommandGroup
+import harkerrobolib.auto.SequentialCommandGroup
+import harkerrobolib.subsystems.HSArm
 
 /**
  * Contains all autonomous commands as one command group.
@@ -9,10 +11,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup
  * @author  Finn Frankis
  * @version 10/11/18
  */
-class AutonomousCommand : CommandGroup {
+class AutonomousCommand : CommandGroup() {
 
-    constructor(mode: harkerrobolib.auto.AutoMode) {
-        addSequential(mode)
+    init {
+        addSequential(
+                SequentialCommandGroup(ArcadeDriveVelocityTimed(3.0, -0.5), MoveArmPosition(1, HSArm.ArmDirection.UP))
+
+        )
     }
 
 
